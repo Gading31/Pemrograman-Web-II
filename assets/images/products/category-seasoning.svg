@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi kategori bumbu dan bahan masak">
+  <rect width="320" height="180" rx="24" fill="#f7eee2"/><circle cx="160" cy="90" r="62" fill="#ead7bd"/>
+  <path d="M105 83h48v44h-48z" fill="#f8f4e9" stroke="#aa7c47" stroke-width="4"/><path d="M101 72h56v14h-56z" rx="4" fill="#aa7c47"/><path d="M115 100h28" stroke="#d09a58" stroke-width="6" stroke-linecap="round"/>
+  <path d="M178 76h42v52h-42z" fill="#d7894a"/><path d="M184 67h30v12h-30z" fill="#a96435"/><path d="M188 96c7-7 15-7 22 0" fill="none" stroke="#f5d3a2" stroke-width="4" stroke-linecap="round"/>
+</svg>

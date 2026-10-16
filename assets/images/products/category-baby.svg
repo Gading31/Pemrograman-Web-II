@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi kategori perlengkapan bayi">
+  <rect width="320" height="180" rx="24" fill="#f4eaf1"/><circle cx="160" cy="90" r="62" fill="#e6cfe0"/>
+  <path d="M160 54c-19 0-34 14-34 32 0 11 5 19 13 25l-6 24h54l-6-24c8-6 13-14 13-25 0-18-15-32-34-32z" fill="#fff8fc" stroke="#a66d95" stroke-width="4"/>
+  <path d="M144 84h1m30 0h1" stroke="#a66d95" stroke-width="6" stroke-linecap="round"/><path d="M151 98c6 6 12 6 18 0" fill="none" stroke="#a66d95" stroke-width="4" stroke-linecap="round"/>
+</svg>

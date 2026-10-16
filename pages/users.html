@@ -1,0 +1,69 @@
+<section class="page-content admin-page users-page" id="users" data-page-view="users" aria-labelledby="users-title" hidden>
+  <div class="page-heading">
+    <div><div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>ADMINISTRASI · PENGGUNA</div><h1 id="users-title">Pengguna &amp; Akses</h1><p class="page-heading__description">Kelola akun presentasi, peran, dan penugasan cabang. Pembatasan akses ini hanya berjalan di frontend.</p></div>
+    <div class="heading-actions"><span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span><button class="button button--secondary" id="users-provision-cashiers" type="button">Siapkan akun kasir cabang</button><button class="button button--primary" id="users-add" type="button">Tambah pengguna</button></div>
+  </div>
+  <div class="admin-notice glass-card" role="note"><strong>Akun presentasi saja.</strong><span>Kata sandi tersimpan di browser ini. Jangan masukkan kredensial pribadi atau produksi. Penyiapan akun cabang hanya menambah ID yang belum ada; akun dan kata sandi yang sudah diubah tidak ditimpa. Akun tidak dihapus permanen agar riwayat tetap utuh.</span></div>
+  <section class="glass-card admin-toolbar" aria-label="Cari dan filter pengguna">
+    <label class="field admin-search" for="users-search"><span class="field__label">Cari nama atau username</span><input class="form-control" id="users-search" type="search" autocomplete="off" placeholder="Contoh: kasir.jkt" /></label>
+    <label class="field" for="users-role-filter"><span class="field__label">Role</span><select class="select-control" id="users-role-filter"><option value="all">Semua role</option><option value="HQ_ADMIN">Admin Pusat</option><option value="CASHIER">Kasir</option></select></label>
+    <label class="field" for="users-branch-filter"><span class="field__label">Cabang</span><select class="select-control" id="users-branch-filter"><option value="all">Semua cabang</option></select></label>
+    <label class="field" for="users-status-filter"><span class="field__label">Status</span><select class="select-control" id="users-status-filter"><option value="all">Semua status</option><option value="active">Aktif</option><option value="inactive">Nonaktif</option></select></label>
+  </section>
+  <section class="glass-card admin-list-card" aria-labelledby="users-list-title">
+    <div class="admin-list-heading"><div><h2 id="users-list-title">Direktori pengguna</h2><p id="users-result-count" aria-live="polite">Memuat daftar…</p></div><span class="badge badge--neutral">Akun untuk masuk</span></div>
+    <div class="admin-form-error" id="users-load-error" role="alert" hidden></div>
+    <div class="admin-table-wrap" tabindex="0" aria-label="Tabel pengguna; geser horizontal pada layar kecil"><table class="admin-table"><thead><tr><th scope="col">Nama / username</th><th scope="col">Role</th><th scope="col">Penugasan</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Aksi</span></th></tr></thead><tbody id="users-table-body"></tbody></table>
+      <div class="empty-state admin-empty" id="users-empty" hidden><span class="empty-state__icon" aria-hidden="true">◌</span><h3>Tidak ada pengguna yang cocok</h3><p>Ubah pencarian atau filter untuk melihat akun lain.</p><button class="button button--secondary" id="users-clear-filters" type="button">Hapus filter</button></div>
+    </div>
+  </section>
+  <footer class="page-footer"><span>Login dan pengelolaan pengguna memakai daftar akun yang sama.</span></footer>
+
+  <dialog class="modal admin-confirm-dialog users-provision-dialog" id="users-provision-dialog" aria-labelledby="users-provision-title" aria-describedby="users-provision-description">
+    <div class="modal__header"><div><span class="section-heading__eyebrow">PENYIAPAN AKUN KASIR</span><h2 id="users-provision-title">Akun Kasir Lima Cabang</h2><p id="users-provision-description">Tinjau akun yang akan ditambahkan ke daftar pengguna.</p></div><button class="icon-button" type="button" data-close-users-provision aria-label="Tutup pratinjau provisioning">Ã—</button></div>
+    <div id="users-provision-error" class="admin-form-error" role="alert" tabindex="-1" hidden></div>
+    <p id="users-provision-summary" class="admin-reset-target"></p>
+    <ul class="admin-change-list" id="users-provision-list"></ul>
+    <div class="modal__footer"><button class="button button--secondary" type="button" data-close-users-provision>Batal</button><button class="button button--primary" type="button" id="users-provision-confirm">Konfirmasi penyiapan</button></div>
+  </dialog>
+
+  <dialog class="modal admin-dialog" id="user-dialog" aria-labelledby="user-dialog-title" aria-describedby="user-dialog-description">
+    <form id="user-form" novalidate>
+      <div class="modal__header"><div><span class="section-heading__eyebrow">DIREKTORI AUTH DEMO</span><h2 id="user-dialog-title">Tambah pengguna</h2><p id="user-dialog-description">Akun ini hanya dapat digunakan pada presentasi lokal.</p></div><button class="icon-button" type="button" data-close-user-dialog aria-label="Tutup formulir">×</button></div>
+      <div class="admin-form-grid">
+        <label class="field" for="user-display-name"><span class="field__label">Nama tampilan</span><input class="form-control" id="user-display-name" name="display_name" maxlength="80" autocomplete="name" required /></label>
+        <label class="field" for="user-username"><span class="field__label">Username</span><input class="form-control" id="user-username" name="username" maxlength="40" autocomplete="username" required /><span class="field__hint">3–40 karakter. Duplikasi tidak membedakan kapital.</span></label>
+        <label class="field" for="user-role"><span class="field__label">Role</span><select class="select-control" id="user-role" name="role" required><option value="HQ_ADMIN">Admin Pusat</option><option value="CASHIER">Kasir</option></select></label>
+        <label class="field" for="user-branch"><span class="field__label">Cabang kasir</span><select class="select-control" id="user-branch" name="branch_id"><option value="">Pilih cabang</option></select><span class="field__hint" id="user-branch-hint">Admin Pusat mencakup seluruh cabang.</span></label>
+        <label class="field" for="user-status"><span class="field__label">Status akun</span><select class="select-control" id="user-status" name="status" required><option value="active">Aktif</option><option value="inactive">Nonaktif</option></select></label>
+        <label class="field" for="user-password"><span class="field__label">Kata sandi simulasi</span><input class="form-control" id="user-password" name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" /><span class="field__hint" id="user-password-hint">Hanya diminta saat membuat akun. Tidak gunakan kata sandi pribadi.</span></label>
+      </div>
+      <div class="admin-reset-password-row" id="user-reset-password-row" hidden><p>Reset kredensial demo hanya berlaku untuk login selanjutnya dan mengakhiri sesi lama akun terpilih.</p><button class="button button--secondary" id="user-reset-password" type="button">Reset Kata Sandi Demo</button></div>
+      <div class="admin-form-error" id="user-form-error" role="alert" tabindex="-1" hidden></div>
+      <div class="modal__footer"><button class="button button--secondary" type="button" data-close-user-dialog>Batal</button><button class="button button--primary" type="submit" id="user-save">Simpan pengguna</button></div>
+    </form>
+  </dialog>
+  <dialog class="modal admin-confirm-dialog" id="user-confirm-dialog" aria-labelledby="user-confirm-title" aria-describedby="user-confirm-description">
+    <div class="modal__header"><div><span class="section-heading__eyebrow">KONFIRMASI PERUBAHAN AKSES</span><h2 id="user-confirm-title">Tinjau perubahan sensitif</h2><p id="user-confirm-description">Perubahan ini dapat mengubah sesi dan halaman yang dapat dibuka pengguna.</p></div><button class="icon-button" type="button" data-close-user-confirm aria-label="Kembali ke formulir">×</button></div>
+    <ul class="admin-change-list" id="user-confirm-changes"></ul>
+    <div class="modal__footer"><button class="button button--secondary" type="button" data-close-user-confirm>Kembali</button><button class="button button--primary" type="button" id="user-confirm-save">Konfirmasi perubahan</button></div>
+  </dialog>
+  <dialog class="modal admin-confirm-dialog" id="user-password-reset-dialog" aria-labelledby="user-password-reset-title" aria-describedby="user-password-reset-description">
+    <form id="user-password-reset-form" novalidate>
+      <div class="modal__header"><div><span class="section-heading__eyebrow">KREDENSIAL PRESENTASI</span><h2 id="user-password-reset-title">Reset Kata Sandi</h2><p id="user-password-reset-description">Buat kata sandi baru. Kata sandi lama tidak ditampilkan.</p></div><button class="icon-button" type="button" data-cancel-password-reset aria-label="Batalkan reset kata sandi">×</button></div>
+      <div id="user-password-reset-entry">
+        <p class="admin-reset-target">Akun terpilih: <strong id="user-password-reset-name"></strong></p>
+        <div class="admin-form-grid admin-reset-form-grid">
+          <label class="field" for="user-reset-password"><span class="field__label">Kata sandi baru</span><input class="form-control" id="user-reset-password" name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required /><span class="field__hint">Minimal 8 karakter.</span></label>
+          <label class="field" for="user-reset-password-confirm"><span class="field__label">Ulangi kata sandi baru</span><input class="form-control" id="user-reset-password-confirm" name="password_confirmation" type="password" minlength="8" maxlength="128" autocomplete="new-password" required /><span class="field__hint">Masukkan kembali kata sandi baru yang sama.</span></label>
+        </div>
+        <div class="admin-form-error" id="user-password-reset-error" role="alert" tabindex="-1" hidden></div>
+        <div class="modal__footer"><button class="button button--secondary" type="button" data-cancel-password-reset>Batal</button><button class="button button--primary" type="submit" id="user-password-reset-continue">Lanjutkan</button></div>
+      </div>
+      <div id="user-password-reset-confirmation" hidden>
+        <p>Konfirmasi reset kata sandi untuk <strong id="user-password-reset-confirm-target"></strong>. Perubahan berlaku saat login berikutnya dan sesi lama akun ini akan ditolak.</p>
+        <div class="modal__footer"><button class="button button--secondary" type="button" id="user-password-reset-back">Kembali</button><button class="button button--primary" type="button" id="user-password-reset-confirm">Konfirmasi Reset</button></div>
+      </div>
+    </form>
+  </dialog>
+</section>

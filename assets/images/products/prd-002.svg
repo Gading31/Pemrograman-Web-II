@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi demo air mineral</title><desc id="desc">Botol air mineral ilustratif, bukan foto produk.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#dff6f5"/><stop offset="1" stop-color="#c6e8f4"/></linearGradient><linearGradient id="bottle" x2="1"><stop stop-color="#76c5e1"/><stop offset=".5" stop-color="#e7fbff"/><stop offset="1" stop-color="#76c5e1"/></linearGradient></defs>
+  <rect width="240" height="180" rx="22" fill="url(#bg)"/><ellipse cx="120" cy="153" rx="31" ry="7" fill="#28677c" opacity=".16"/>
+  <path d="M108 25h24v17l10 13v76q0 10-10 10h-24q-10 0-10-10V55l10-13z" fill="url(#bottle)" stroke="#4f9cb7" stroke-width="3"/><path d="M108 25h24v12h-24z" fill="#157ea0"/><path d="M100 75h40v32h-40z" fill="#fff" opacity=".82"/><path d="M100 81h40v8h-40z" fill="#30a6c6"/><text x="120" y="101" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#23738c">AIR MINERAL</text>
+  <text x="120" y="123" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#23738c">600 ml</text>
+</svg>

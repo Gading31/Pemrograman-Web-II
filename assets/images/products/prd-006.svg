@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi demo minyak goreng</title><desc id="desc">Botol minyak goreng ilustratif, bukan foto produk.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#fff3c9"/><stop offset="1" stop-color="#f4df9c"/></linearGradient><linearGradient id="oil" x2="1"><stop stop-color="#f3b72e"/><stop offset=".5" stop-color="#ffe69a"/><stop offset="1" stop-color="#e89b18"/></linearGradient></defs>
+  <rect width="240" height="180" rx="22" fill="url(#bg)"/><ellipse cx="120" cy="152" rx="38" ry="7" fill="#8b681f" opacity=".18"/>
+  <path d="M110 31h20v15l13 14v73q0 10-11 10h-24q-11 0-11-10V60l13-14z" fill="url(#oil)" stroke="#bd851d" stroke-width="3"/><path d="M110 31h20v11h-20z" fill="#d27e19"/><path d="M98 76h44v29H98z" fill="#fff9dc" opacity=".95"/><path d="M102 81h36v5h-36z" fill="#f0ac25"/><text x="120" y="98" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#80551c">MINYAK</text><text x="120" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#80551c">1 L · DEMO</text>
+</svg>

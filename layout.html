@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="description" content="Demo operasional POS minimarket multi-cabang. Data tersimpan pada browser ini dan transaksi hanya untuk simulasi." />
+    <title>Nusantara POS - Demo Operasional Minimarket</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+    <link rel="stylesheet" href="assets/css/products.css" />
+    <link rel="stylesheet" href="assets/css/pricing.css" />
+    <link rel="stylesheet" href="assets/css/inventory.css" />
+    <link rel="stylesheet" href="assets/css/pos.css" />
+    <link rel="stylesheet" href="assets/css/m6.css" />
+    <link rel="stylesheet" href="assets/css/distribution.css" />
+    <link rel="stylesheet" href="assets/css/reporting.css" />
+    <link rel="stylesheet" href="assets/css/admin.css" />
+    <link rel="stylesheet" href="assets/css/auth.css" />
+    <script type="module" src="assets/js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+
+    <div class="app-shell">
+      <button
+        class="sidebar-scrim"
+        type="button"
+        data-sidebar-close
+        aria-label="Tutup navigasi"
+        tabindex="-1"
+      ></button>
+
+      <aside class="sidebar" id="primary-sidebar" aria-label="Navigasi utama" data-sidebar>
+        <a class="brand" href="#overview" aria-label="Nusantara POS, ke dashboard">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M5 13.5 16 5l11 8.5v13H5v-13Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+              <path d="M11 26.5v-8h10v8M10 13h12M13 13v3m6-3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              <circle cx="16" cy="10" r="1.2" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="brand__text">
+            <strong>Nusantara</strong>
+            <span>POS &amp; Retail</span>
+          </span>
+          <span class="brand__product">ADMIN PANEL</span>
+        </a>
+
+        <div class="workspace-chip">
+          <span class="workspace-chip__icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M3 17V7l7-4 7 4v10M1.5 17h17M7 17v-5h6v5M6 8h.01M10 8h.01M14 8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </span>
+          <span class="workspace-chip__copy">
+            <strong>Ruang kerja</strong>
+            <span>Multi-cabang</span>
+            <span class="workspace-chip__cashier" data-cashier-branch-context aria-live="polite">Kasir: belum aktif</span>
+          </span>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Menu aplikasi">
+          <div class="nav-group">
+            <h2 class="nav-group__label">Operasional</h2>
+            <a class="nav-link is-active" href="#overview" data-app-route="overview" aria-current="page">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.5" /><rect x="11.5" y="3" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.5" /><rect x="3" y="11.5" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.5" /><rect x="11.5" y="11.5" width="5.5" height="5.5" rx="1" stroke="currentColor" stroke-width="1.5" /></svg>
+              <span>Dashboard</span>
+              <span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#pos" data-app-route="pos" aria-label="Kasir POS">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 5.5h12l1.2 9.8H2.8L4 5.5Zm3 0V4a3 3 0 0 1 6 0v1.5M6.5 9v.01M10 9v.01M13.5 9v.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <span>Kasir / POS</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#transactions" data-app-route="transactions" aria-label="Riwayat Transaksi">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 3.5h12v13H4zM7 7h6M7 10h6M7 13h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <span>Riwayat Transaksi</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#shifts" data-app-route="shifts" aria-label="Shift dan Rekonsiliasi">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 5.5V10l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Shift &amp; Rekonsiliasi</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#products" data-app-route="products" aria-label="Master Produk">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5h14M4 5.5l1 11h10l1-11M7 5.5V4a3 3 0 0 1 6 0v1.5M7.5 9v4m5-4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <span>Master Produk</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#inventory" data-app-route="inventory" aria-label="Persediaan dan batch">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m10 2.5 7 4v7l-7 4-7-4v-7l7-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><path d="m3.5 6.5 6.5 4 6.5-4M10 10.5v7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
+              <span>Persediaan &amp; Batch</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div class="nav-group">
+            <h2 class="nav-group__label">Manajemen</h2>
+            <a class="nav-link" href="#distribution" data-app-route="distribution" aria-label="Permintaan dan Distribusi Stok">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h10m0 0-3-3m3 3-3 3m7 5H7m0 0 3-3m-3 3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <span>Distribusi</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#pricing" data-app-route="pricing" aria-label="Aturan Harga Regional">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m3 10 7-7h6a1 1 0 0 1 1 1v6l-7 7-7-7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><circle cx="13.5" cy="6.5" r="1" fill="currentColor" /></svg>
+              <span>Harga Regional</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#reports" data-app-route="reports" aria-label="Laporan penjualan">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 16.5V10m7 6.5V4m7 12.5v-9M1.5 17h17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+              <span>Laporan</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div class="nav-group">
+            <h2 class="nav-group__label">Administrasi</h2>
+            <a class="nav-link" href="#users" data-app-route="users" aria-label="Pengguna dan akses">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.5" /><path d="M2.5 17a5.5 5.5 0 0 1 11 0M15 6.5a2.5 2.5 0 0 1 0 5m.5 2a4 4 0 0 1 2 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+              <span>Pengguna &amp; Akses</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+            <a class="nav-link" href="#settings" data-app-route="settings" aria-label="Pengaturan">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5" /><path d="m16.2 12.5 1.1 1.8-2 2-1.8-1.1a6.7 6.7 0 0 1-1.6.7l-.5 2.1h-2.8l-.5-2.1a6.7 6.7 0 0 1-1.6-.7l-1.8 1.1-2-2 1.1-1.8a6.7 6.7 0 0 1-.7-1.6l-2.1-.5V7.6l2.1-.5a6.7 6.7 0 0 1 .7-1.6L2.7 3.7l2-2 1.8 1.1a6.7 6.7 0 0 1 1.6-.7l.5-2.1h2.8l.5 2.1a6.7 6.7 0 0 1 1.6.7l1.8-1.1 2 2-1.1 1.8a6.7 6.7 0 0 1 .7 1.6l2.1.5v2.8l-2.1.5a6.7 6.7 0 0 1-.7 1.6Z" transform="translate(0 1)" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" /></svg>
+              <span>Pengaturan</span><span class="nav-link__active-dot" aria-hidden="true"></span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="sidebar-footer">
+          <span class="sidebar-footer__avatar" aria-hidden="true" data-sidebar-avatar>D</span>
+          <span class="sidebar-footer__identity"><strong data-sidebar-user>Belum masuk</strong><span data-sidebar-role>Masuk untuk melanjutkan</span></span>
+          <span class="status-dot" aria-label="Data simulasi"></span>
+        </div>
+      </aside>
+
+      <div class="app-main">
+        <header class="topbar">
+          <div class="topbar__start">
+            <button
+              class="icon-button menu-toggle"
+              type="button"
+              data-sidebar-toggle
+              aria-controls="primary-sidebar"
+              aria-expanded="false"
+              aria-label="Buka navigasi"
+            >
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+            </button>
+            <button
+              class="icon-button sidebar-collapse-toggle"
+              type="button"
+              data-sidebar-collapse
+              aria-controls="primary-sidebar"
+              aria-pressed="false"
+              aria-label="Ciutkan sidebar"
+              title="Ciutkan sidebar"
+            >
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12 4-6 6 6 6m4-12-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><span>Nusantara POS</span></li>
+                <li aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></li>
+                <li aria-current="page" data-breadcrumb-page>Dashboard</li>
+              </ol>
+            </nav>
+          </div>
+
+          <div class="topbar__actions">
+            <span class="scope-pill scope-pill--cashier" data-cashier-branch-context aria-live="polite" aria-label="Belum ada cabang kasir aktif"><span class="scope-pill__dot" aria-hidden="true"></span><span class="scope-pill__cashier-label">Kasir: belum aktif</span></span>
+            <button
+              class="icon-button"
+              type="button"
+              data-toast
+              data-toast-message="Pusat notifikasi belum tersedia. Ini hanya demo shell."
+              aria-label="Notifikasi, belum tersedia"
+              title="Notifikasi belum tersedia"
+            >
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M15.5 7.7a5.5 5.5 0 0 0-11 0c0 6-2 6-2 7.3h15c0-1.3-2-1.3-2-7.3ZM8 17h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+            <button
+              class="icon-button theme-toggle"
+              type="button"
+              data-theme-toggle
+              aria-label="Ganti ke tema terang"
+              aria-pressed="true"
+              title="Ganti tema"
+            >
+              <svg class="theme-icon theme-icon--sun" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5" /><path d="M10 1.8v2m0 12.4v2M1.8 10h2m12.4 0h2M4.2 4.2l1.4 1.4m8.8 8.8 1.4 1.4m0-11.6-1.4 1.4m-8.8 8.8-1.4 1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+              <svg class="theme-icon theme-icon--moon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16.6 12.4A7 7 0 0 1 7.6 3.4 7.4 7.4 0 1 0 16.6 12.4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
+            </button>
+            <div class="profile-chip" aria-label="Pengguna demo" data-profile-chip>
+              <span class="profile-chip__avatar" aria-hidden="true" data-profile-avatar>D</span>
+              <span class="profile-chip__text"><strong data-profile-name>Belum masuk</strong><span data-profile-role>Mode simulasi</span></span>
+            </div>
+            <button class="button button--quiet profile-logout" type="button" data-logout aria-label="Keluar dari sesi demo" title="Keluar">Keluar</button>
+          </div>
+        </header>
+
+        <main class="main-content" id="main-content" tabindex="-1">
+          <div id="page-view-root" data-page-template-root aria-busy="true"></div>
+        </main>
+      </div>
+    </div>
+
+    <dialog class="modal" id="demo-dialog" aria-labelledby="demo-dialog-title" aria-describedby="demo-dialog-description">
+      <div class="modal__header">
+        <span class="modal__icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5" /><path d="M10 9v4m0-6v.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg></span>
+        <button class="icon-button modal__close" type="button" data-modal-close aria-label="Tutup dialog"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg></button>
+      </div>
+      <span class="section-heading__eyebrow">TENTANG WORKSPACE</span>
+      <h2 id="demo-dialog-title">Demo lokal, katalog simulasi</h2>
+      <p id="demo-dialog-description">Master Produk, Aturan Harga Regional, Persediaan &amp; Batch, checkout tunai, dan sesi role memakai repository demo lokal di browser ini. Login dan pembatasan menu hanya simulasi frontend, bukan autentikasi atau RBAC produksi. Promosi penuh, override, pembayaran non-tunai, dan backend produksi belum tersedia. Perubahan tidak tersinkron ke perangkat lain.</p>
+      <div class="modal__footer"><span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span><button class="button button--primary" type="button" data-modal-close>Mengerti</button></div>
+    </dialog>
+
+    <dialog class="modal m6-close-confirm-dialog" id="shift-close-confirm-dialog" aria-labelledby="shift-close-confirm-title" aria-describedby="shift-close-confirm-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">✓</span><button class="icon-button modal__close" type="button" data-shift-close-cancel aria-label="Kembali tanpa menutup shift"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg></button></div>
+      <span class="section-heading__eyebrow">KONFIRMASI REKONSILIASI</span>
+      <h2 id="shift-close-confirm-title">Tutup shift kasir?</h2>
+      <p id="shift-close-confirm-description">Periksa kembali kas fisik dan ekspektasi. Data baru disimpan setelah Anda memilih Konfirmasi Tutup Shift.</p>
+      <dl class="m6-close-confirm-summary" aria-live="polite">
+        <div><dt>Ekspektasi kas</dt><dd id="shift-close-confirm-expected">Rp0</dd></div>
+        <div><dt>Kas fisik</dt><dd id="shift-close-confirm-physical">Rp0</dd></div>
+        <div class="m6-close-confirm-summary__difference"><dt>Selisih (fisik − ekspektasi)</dt><dd id="shift-close-confirm-difference">Rp0</dd></div>
+      </dl>
+      <div id="shift-close-confirm-error" class="m6-error" role="alert" tabindex="-1" hidden></div>
+      <div class="modal__footer m6-close-confirm-actions"><button class="button button--secondary" type="button" data-shift-close-cancel autofocus>Kembali</button><button class="button button--primary" type="button" id="shift-close-confirm-submit">Konfirmasi Tutup Shift</button></div>
+    </dialog>
+
+    <dialog class="modal pos-shift-dialog" id="pos-shift-dialog" aria-labelledby="pos-shift-dialog-title" aria-describedby="pos-shift-dialog-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">◷</span><button class="icon-button modal__close" type="button" data-close-pos-dialog aria-label="Tutup buka shift"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">KASIR · DATA SIMULASI</span><h2 id="pos-shift-dialog-title">Buka shift kasir</h2><p id="pos-shift-dialog-description">Shift demo mengikat kasir ke cabang dan saldo awal. Saldo kas bertambah sebesar pembayaran tunai neto yang sudah tersimpan.</p>
+      <form id="pos-shift-form" novalidate>
+        <div class="pos-dialog-error" id="pos-shift-error" role="alert" tabindex="-1" hidden></div>
+        <label class="field" for="pos-shift-opening-cash"><span class="field__label">Saldo awal kas (IDR) <span aria-hidden="true">*</span></span><input class="form-control" id="pos-shift-opening-cash" name="opening_cash_idr" type="number" min="0" step="1" inputmode="numeric" value="200000" required/><span class="field__hint">Contoh skenario: Rp200.000.</span></label>
+        <div class="modal__footer"><button class="button button--secondary" type="button" data-close-pos-dialog>Batal</button><button class="button button--primary" type="submit">Buka shift demo</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal pos-receipt-dialog" id="pos-receipt-dialog" aria-labelledby="pos-receipt-title" aria-describedby="pos-receipt-status">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">▤</span><button class="icon-button modal__close" type="button" data-close-pos-dialog aria-label="Tutup struk"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">STRUK TRANSAKSI TUNAI</span><h2 id="pos-receipt-title">Struk belanja</h2>
+      <div class="pos-receipt" id="pos-receipt">
+        <div class="pos-receipt__brand"><strong>MINIMARKET NUSANTARA</strong><span id="pos-receipt-branch"></span><span id="pos-receipt-number"></span></div>
+        <p class="pos-receipt__status" id="pos-receipt-status">Pratinjau — Belum Dibayar</p>
+        <div class="pos-receipt__items" id="pos-receipt-items"></div>
+        <dl class="pos-receipt__totals"><div><dt>Subtotal reguler</dt><dd id="pos-receipt-gross">Rp0</dd></div><div><dt>Diskon batch</dt><dd id="pos-receipt-discount">−Rp0</dd></div><div class="pos-receipt__net"><dt>Total</dt><dd id="pos-receipt-net">Rp0</dd></div><div><dt>Tunai diterima</dt><dd id="pos-receipt-tender">—</dd></div><div><dt>Kembalian</dt><dd id="pos-receipt-change">—</dd></div></dl>
+        <p class="pos-receipt__footer" id="pos-receipt-footer">Pratinjau saja. Belum ada pembayaran atau transaksi yang disimpan.<br/>Stok, pembayaran, ledger, dan kas shift belum berubah.</p>
+      </div>
+      <div class="modal__footer pos-receipt-actions"><button class="button button--secondary" type="button" data-close-pos-dialog>Tutup</button><button class="button button--primary" type="button" id="pos-print-receipt" hidden>Cetak struk</button></div>
+    </dialog>
+
+    <dialog class="modal pos-clear-dialog" id="pos-clear-dialog" aria-labelledby="pos-clear-title" aria-describedby="pos-clear-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">!</span><button class="icon-button modal__close" type="button" data-close-pos-dialog aria-label="Kembali ke keranjang"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">KERANJANG POS</span><h2 id="pos-clear-title">Kosongkan keranjang?</h2><p id="pos-clear-description">Semua kuantitas yang dipilih akan dihapus. Tidak ada stok yang berubah sebelum checkout berhasil.</p>
+      <div class="modal__footer"><button class="button button--secondary" type="button" data-close-pos-dialog>Kembali</button><button class="button button--primary" type="button" id="pos-clear-confirm">Kosongkan</button></div>
+    </dialog>
+
+    <dialog class="modal m6-detail-dialog" id="transaction-detail-dialog" aria-labelledby="transaction-detail-title" aria-describedby="transaction-detail-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">▤</span><button class="icon-button modal__close" type="button" data-close-transaction-dialog aria-label="Tutup detail transaksi"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">SNAPSHOT CHECKOUT · HANYA BACA</span><h2 id="transaction-detail-title">Detail transaksi</h2><p id="transaction-detail-description">Snapshot harga, alokasi, pembayaran, dan kembalian tersimpan.</p><div id="transaction-detail-content"></div>
+      <div class="modal__footer"><button class="button button--secondary" type="button" data-close-transaction-dialog>Tutup</button><button class="button button--primary" type="button" id="transaction-reprint" hidden>Cetak ulang struk selesai</button></div>
+    </dialog>
+
+    <dialog class="modal pos-receipt-dialog m6-receipt-dialog" id="transaction-receipt-dialog" aria-labelledby="transaction-receipt-title" data-receipt-state="none">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">▤</span><button class="icon-button modal__close" type="button" data-close-transaction-receipt aria-label="Tutup struk"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <article class="pos-receipt"><div class="pos-receipt__brand"><strong>NUSANTARA POS</strong><span>Minimarket Nusantara · Data Simulasi</span></div><h2 id="transaction-receipt-title">Struk transaksi</h2><p class="pos-receipt__branch" id="transaction-receipt-branch"></p><p class="pos-receipt__number" id="transaction-receipt-number"></p><p class="pos-receipt__status is-paid" id="transaction-receipt-status">LUNAS · TUNAI SIMULASI</p><div class="pos-receipt__items" id="transaction-receipt-items"></div><dl class="pos-receipt__totals"><div><dt>Subtotal reguler</dt><dd id="transaction-receipt-gross"></dd></div><div><dt>Diskon</dt><dd id="transaction-receipt-discount"></dd></div><div class="pos-receipt__net"><dt>Total</dt><dd id="transaction-receipt-net"></dd></div><div><dt>Tunai diterima</dt><dd id="transaction-receipt-tender"></dd></div><div><dt>Kembalian</dt><dd id="transaction-receipt-change"></dd></div></dl><p class="pos-receipt__footer">Cetak ulang dari snapshot transaksi completed. Simulasi lokal.</p></article>
+      <div class="modal__footer pos-receipt-actions"><button class="button button--secondary" type="button" data-close-transaction-receipt>Tutup</button><button class="button button--primary" type="button" id="transaction-print-confirm">Cetak struk</button></div>
+    </dialog>
+
+    <dialog class="modal product-dialog" id="product-dialog" aria-labelledby="product-dialog-title" aria-describedby="product-dialog-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5.5h14M4 5.5l1 11h10l1-11M7 5.5V4a3 3 0 0 1 6 0v1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span><button class="icon-button modal__close" type="button" data-close-product-form aria-label="Tutup formulir produk"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg></button></div>
+      <span class="section-heading__eyebrow">KATALOG DEMO</span><h2 id="product-dialog-title">Tambah produk</h2><p id="product-dialog-description">Isi identitas dan harga dasar produk. Data stok dikelola terpisah dan tidak dapat diedit dari formulir ini.</p>
+      <form id="product-form" novalidate>
+        <div class="product-form-error" id="product-form-error" role="alert" tabindex="-1" hidden></div>
+        <section class="product-image-editor" aria-labelledby="product-image-heading">
+          <div class="product-image-editor__preview">
+            <img id="product-image-preview" src="assets/images/products/placeholder.svg" alt="Ilustrasi demo untuk gambar produk" width="160" height="160" />
+            <span id="product-image-caption">Ilustrasi demo · bukan foto produk</span>
+          </div>
+          <div class="product-image-editor__controls" id="product-image-controls">
+            <h3 id="product-image-heading">Gambar produk</h3>
+            <p>Unggah JPG, PNG, atau WebP maksimal 2 MB. Gambar diproses di browser dan disimpan terpisah dari data produk.</p>
+            <label class="field" for="product-image-file"><span class="field__label">Pilih atau ganti gambar</span><input class="form-control product-image-file" id="product-image-file" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="product-image-help product-image-error" /><span class="field__hint" id="product-image-help">Upload baru diterapkan saat produk disimpan.</span></label>
+            <div class="product-image-editor__actions"><button class="button button--secondary" type="button" id="product-image-remove" hidden>Hapus gambar</button><span class="field__hint" id="product-image-status" role="status" aria-live="polite"></span></div>
+            <div class="product-image-error" id="product-image-error" role="alert" tabindex="-1" hidden></div>
+          </div>
+          <p class="product-image-readonly" id="product-image-readonly" hidden>Gambar katalog hanya dapat dikelola Admin Pusat.</p>
+        </section>
+        <div class="product-form-grid">
+          <label class="field" for="product-name"><span class="field__label">Nama produk <span aria-hidden="true">*</span></span><input class="form-control" id="product-name" name="name" autocomplete="off" required aria-describedby="error-name" /><span class="field-error" id="error-name"></span></label>
+          <label class="field" for="product-sku"><span class="field__label">SKU <span aria-hidden="true">*</span></span><input class="form-control" id="product-sku" name="sku" autocomplete="off" required aria-describedby="error-sku" /><span class="field-error" id="error-sku"></span></label>
+          <label class="field" for="product-barcode"><span class="field__label">Barcode <span class="field__optional">Opsional</span></span><input class="form-control" id="product-barcode" name="barcode" inputmode="numeric" autocomplete="off" aria-describedby="error-barcode" /><span class="field-error" id="error-barcode"></span></label>
+          <label class="field" for="product-category"><span class="field__label">Kategori <span aria-hidden="true">*</span></span><select class="select-control" id="product-category" name="category_id" required aria-describedby="error-category_id"><option value="">Pilih kategori</option></select><span class="field-error" id="error-category_id"></span></label>
+          <label class="field" for="product-unit"><span class="field__label">Satuan jual <span aria-hidden="true">*</span></span><select class="select-control" id="product-unit" name="unit_id" required aria-describedby="error-unit_id"><option value="">Pilih satuan</option></select><span class="field-error" id="error-unit_id"></span></label>
+          <label class="field" for="product-price"><span class="field__label">Harga dasar (IDR) <span aria-hidden="true">*</span></span><span class="form-price-wrap"><span aria-hidden="true">Rp</span><input class="form-control" id="product-price" name="base_price_idr" type="number" min="0" step="1" inputmode="numeric" required aria-describedby="price-hint error-base_price_idr" /></span><span class="field__hint" id="price-hint">Masukkan integer rupiah, tanpa desimal.</span><span class="field-error" id="error-base_price_idr"></span></label>
+          <label class="field" for="product-expiry"><span class="field__label">Kebijakan kedaluwarsa <span aria-hidden="true">*</span></span><select class="select-control" id="product-expiry" name="expiry_policy" required aria-describedby="expiry-hint error-expiry_policy"><option value="">Pilih kebijakan per produk</option><option value="required">Wajib dicatat per batch</option><option value="optional">Opsional per batch</option><option value="not_required">Tidak berlaku</option></select><span class="field__hint" id="expiry-hint">Pilih sesuai karakter produk; kebijakan ini berlaku per batch.</span><span class="field-error" id="error-expiry_policy"></span></label>
+        </div>
+        <div class="product-form-note"><strong>Stok tidak diedit di sini.</strong> Formulir ini hanya menyimpan data master produk dan harga dasar.</div>
+        <div class="modal__footer product-form-footer"><button class="button button--secondary" type="button" data-close-product-form>Batal</button><button class="button button--primary" type="submit" id="product-save-button">Simpan produk</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal action-dialog" id="action-confirm-dialog" aria-labelledby="action-dialog-title" aria-describedby="action-dialog-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">!</span><button class="icon-button modal__close" type="button" data-cancel-action aria-label="Tutup konfirmasi"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg></button></div>
+      <span class="section-heading__eyebrow">KONFIRMASI</span><h2 id="action-dialog-title">Konfirmasi perubahan</h2><p id="action-dialog-description"></p>
+      <div class="modal__footer"><button class="button button--secondary" type="button" data-cancel-action>Batal</button><button class="button button--primary" type="button" data-confirm-action>Konfirmasi</button></div>
+    </dialog>
+
+    <dialog class="modal pricing-dialog" id="pricing-rule-dialog" aria-labelledby="pricing-rule-dialog-title" aria-describedby="pricing-rule-dialog-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="m3 10 7-7h6l1 1v6l-7 7-7-7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="13.5" cy="6.5" r="1" fill="currentColor"/></svg></span><button class="icon-button modal__close" type="button" data-close-pricing-rule aria-label="Tutup formulir aturan harga"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">KONFIGURASI REGIONAL · DATA DEMO</span>
+      <h2 id="pricing-rule-dialog-title">Tambah aturan regional</h2>
+      <p id="pricing-rule-dialog-description">Tentukan wilayah, kategori, penyesuaian persen, status, dan periode efektif. Aturan yang bertumpang tindih tidak dapat disimpan.</p>
+      <form id="pricing-rule-form" novalidate>
+        <div class="pricing-form-error" id="pricing-form-error" role="alert" tabindex="-1" hidden></div>
+        <div class="pricing-form-grid">
+          <label class="field" for="pricing-rule-region"><span class="field__label">Wilayah <span aria-hidden="true">*</span></span><select class="select-control" id="pricing-rule-region" name="region_id" required aria-describedby="pricing-error-region_id"><option value="">Pilih wilayah</option></select><span class="field-error" id="pricing-error-region_id"></span></label>
+          <label class="field" for="pricing-rule-category"><span class="field__label">Kategori <span aria-hidden="true">*</span></span><select class="select-control" id="pricing-rule-category" name="category_id" required aria-describedby="pricing-error-category_id"><option value="">Pilih kategori</option></select><span class="field-error" id="pricing-error-category_id"></span></label>
+          <label class="field" for="pricing-rule-adjustment"><span class="field__label">Penyesuaian (%) <span aria-hidden="true">*</span></span><input class="form-control" id="pricing-rule-adjustment" name="adjustment_percent" type="number" step="any" inputmode="decimal" required aria-describedby="pricing-adjustment-hint pricing-error-adjustment_percent"/><span class="field__hint" id="pricing-adjustment-hint">Nilai 0% harus diatur eksplisit. Nominal hasil harga tetap integer rupiah.</span><span class="field-error" id="pricing-error-adjustment_percent"></span></label>
+          <label class="field" for="pricing-rule-status"><span class="field__label">Status <span aria-hidden="true">*</span></span><select class="select-control" id="pricing-rule-status" name="status" required aria-describedby="pricing-error-status"><option value="active">Aktif</option><option value="inactive">Nonaktif</option></select><span class="field-error" id="pricing-error-status"></span></label>
+          <label class="field" for="pricing-rule-valid-from"><span class="field__label">Berlaku mulai <span aria-hidden="true">*</span></span><input class="form-control" id="pricing-rule-valid-from" name="valid_from" type="date" required aria-describedby="pricing-date-hint pricing-error-valid_from"/><span class="field__hint" id="pricing-date-hint">Tanggal awal dan akhir bersifat inklusif.</span><span class="field-error" id="pricing-error-valid_from"></span></label>
+          <label class="field" for="pricing-rule-valid-until"><span class="field__label">Berlaku sampai <span class="field__optional">Opsional</span></span><input class="form-control" id="pricing-rule-valid-until" name="valid_until" type="date" aria-describedby="pricing-error-valid_until"/><span class="field__hint">Kosongkan untuk periode tanpa batas akhir.</span><span class="field-error" id="pricing-error-valid_until"></span></label>
+        </div>
+        <div class="modal__footer pricing-form-footer"><button class="button button--secondary" type="button" data-close-pricing-rule>Batal</button><button class="button button--primary" type="submit" id="pricing-rule-save-button">Simpan aturan</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal pricing-discard-dialog" id="pricing-discard-dialog" aria-labelledby="pricing-discard-title" aria-describedby="pricing-discard-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">!</span><button class="icon-button modal__close" type="button" data-stay-pricing aria-label="Tetap mengedit"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">PERUBAHAN BELUM DISIMPAN</span><h2 id="pricing-discard-title">Buang perubahan?</h2><p id="pricing-discard-description">Form aturan harga memiliki perubahan yang belum disimpan.</p>
+      <div class="modal__footer"><button class="button button--secondary" type="button" data-stay-pricing>Tetap Mengedit</button><button class="button button--primary" type="button" data-discard-pricing>Buang Perubahan</button></div>
+    </dialog>
+
+    <dialog class="modal inventory-dialog" id="inventory-opening-dialog" aria-labelledby="inventory-opening-title" aria-describedby="inventory-opening-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">＋</span><button class="icon-button modal__close" type="button" data-close-inventory-dialog aria-label="Tutup pencatatan batch"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">CATATAN STOK AWAL · MUTASI DEMO</span><h2 id="inventory-opening-title">Catat batch dan saldo awal</h2><p id="inventory-opening-description">Simpan batch baru bersama mutasi saldo awal. Kebijakan rotasi dipilih eksplisit, terpisah dari kebijakan kedaluwarsa produk.</p>
+      <form id="inventory-opening-form" novalidate>
+        <div class="inventory-form-error" id="inventory-opening-error" role="alert" tabindex="-1" hidden></div>
+        <div class="inventory-form-grid">
+          <label class="field" for="inventory-opening-product"><span class="field__label">Produk <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-opening-product" name="product_id" required></select><span class="field-error" data-inventory-field-error="productId"></span></label>
+          <label class="field" for="inventory-opening-warehouse"><span class="field__label">Gudang <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-opening-warehouse" name="warehouse_id" required></select><span class="field-error" data-inventory-field-error="warehouseId"></span></label>
+          <label class="field" for="inventory-opening-location"><span class="field__label">Lokasi stok <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-opening-location" name="stock_location_id" required></select><span class="field-error" data-inventory-field-error="stockLocationId"></span></label>
+          <label class="field" for="inventory-opening-lot"><span class="field__label">Nomor lot <span aria-hidden="true">*</span></span><input class="form-control" id="inventory-opening-lot" name="lot_number" maxlength="80" required/><span class="field-error" data-inventory-field-error="lotNumber"></span></label>
+          <label class="field" for="inventory-opening-received"><span class="field__label">Tanggal diterima <span aria-hidden="true">*</span></span><input class="form-control" id="inventory-opening-received" name="received_at" type="date" value="2026-10-12" required/><span class="field-error" data-inventory-field-error="receivedAt"></span></label>
+          <label class="field" for="inventory-opening-expiry"><span class="field__label">Tanggal kedaluwarsa <span class="field__optional" id="inventory-expiry-requirement">Opsional sesuai produk</span></span><input class="form-control" id="inventory-opening-expiry" name="expiry_date" type="date"/><span class="field-error" data-inventory-field-error="expiryDate"></span></label>
+          <label class="field" for="inventory-opening-policy"><span class="field__label">Kebijakan rotasi <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-opening-policy" name="rotation_policy" required><option value="">Pilih kebijakan</option><option value="FEFO">FEFO · kedaluwarsa terdekat</option><option value="FIFO">FIFO · penerimaan terlama</option></select><span class="field__hint">Tidak diturunkan otomatis dari kebijakan kedaluwarsa produk.</span><span class="field-error" data-inventory-field-error="rotationPolicy"></span></label>
+          <label class="field" for="inventory-opening-available"><span class="field__label">Layak jual</span><input class="form-control" id="inventory-opening-available" name="AVAILABLE" type="number" min="0" step="1" value="0"/><span class="field-error" data-inventory-field-error="quantity_AVAILABLE"></span></label>
+          <label class="field" for="inventory-opening-quarantine"><span class="field__label">Karantina</span><input class="form-control" id="inventory-opening-quarantine" name="QUARANTINE" type="number" min="0" step="1" value="0"/><span class="field-error" data-inventory-field-error="quantity_QUARANTINE"></span></label>
+          <label class="field" for="inventory-opening-damaged"><span class="field__label">Rusak</span><input class="form-control" id="inventory-opening-damaged" name="DAMAGED" type="number" min="0" step="1" value="0"/><span class="field-error" data-inventory-field-error="quantity_DAMAGED"></span></label>
+          <label class="field" for="inventory-opening-expired"><span class="field__label">Kedaluwarsa</span><input class="form-control" id="inventory-opening-expired" name="EXPIRED" type="number" min="0" step="1" value="0"/><span class="field-error" data-inventory-field-error="quantity_EXPIRED"></span></label>
+          <label class="field inventory-form-grid__wide" for="inventory-opening-reason"><span class="field__label">Alasan pencatatan <span aria-hidden="true">*</span></span><textarea class="form-control" id="inventory-opening-reason" name="reason" rows="2" maxlength="240" required></textarea><span class="field-error" data-inventory-field-error="reason"></span></label>
+        </div>
+        <p class="inventory-form-note">Saldo dalam transit tidak dapat dibuat di sini. Kondisi itu hanya berasal dari alur distribusi, yang belum tersedia.</p>
+        <div class="modal__footer inventory-form-footer"><button class="button button--secondary" type="button" data-close-inventory-dialog>Batal</button><button class="button button--primary" type="submit">Simpan stok awal</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal inventory-dialog" id="inventory-adjustment-dialog" aria-labelledby="inventory-adjustment-title" aria-describedby="inventory-adjustment-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">±</span><button class="icon-button modal__close" type="button" data-close-inventory-dialog aria-label="Tutup penyesuaian stok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">PENYESUAIAN · RIWAYAT MUTASI</span><h2 id="inventory-adjustment-title">Sesuaikan saldo batch</h2><p id="inventory-adjustment-description">Masukkan perubahan integer bertanda dan alasan wajib. Mutasi lama tidak dapat diedit atau dihapus.</p>
+      <form id="inventory-adjustment-form" novalidate>
+        <div class="inventory-form-error" id="inventory-adjustment-error" role="alert" tabindex="-1" hidden></div>
+        <div class="inventory-form-grid inventory-form-grid--adjustment">
+          <label class="field inventory-form-grid__wide" for="inventory-adjustment-mode"><span class="field__label">Jenis perubahan <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-adjustment-mode" name="adjustment_mode"><option value="adjustment">Koreksi saldo</option><option value="transfer">Pindah kondisi · total fisik tetap</option></select></label>
+          <label class="field inventory-form-grid__wide" for="inventory-adjustment-batch"><span class="field__label">Batch <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-adjustment-batch" name="inventory_batch_id" required></select><span class="field-error" data-inventory-adjustment-error="inventoryBatchId"></span></label>
+          <label class="field" for="inventory-adjustment-bucket"><span class="field__label"><span id="inventory-adjustment-bucket-label">Kondisi stok</span> <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-adjustment-bucket" name="bucket" required><option value="AVAILABLE">Layak jual</option><option value="QUARANTINE">Karantina</option><option value="DAMAGED">Rusak</option><option value="EXPIRED">Kedaluwarsa</option></select><span class="field-error" data-inventory-adjustment-error="bucket"></span></label>
+          <label class="field inventory-transfer-field" id="inventory-adjustment-destination-field" for="inventory-adjustment-destination" hidden><span class="field__label">Kondisi tujuan <span aria-hidden="true">*</span></span><select class="select-control" id="inventory-adjustment-destination" name="destination_bucket"><option value="QUARANTINE">Karantina</option><option value="AVAILABLE">Layak jual</option><option value="DAMAGED">Rusak</option><option value="EXPIRED">Kedaluwarsa</option></select><span class="field-error" data-inventory-adjustment-error="destinationBucket"></span></label>
+          <label class="field" for="inventory-adjustment-delta"><span class="field__label"><span id="inventory-adjustment-delta-label">Perubahan unit</span> <span aria-hidden="true">*</span></span><input class="form-control" id="inventory-adjustment-delta" name="delta" type="number" step="1" required aria-describedby="inventory-adjustment-delta-hint"/><span class="field__hint" id="inventory-adjustment-delta-hint">Gunakan angka positif untuk tambah dan negatif untuk koreksi turun.</span><span class="field-error" data-inventory-adjustment-error="delta"></span></label>
+          <label class="field inventory-form-grid__wide" for="inventory-adjustment-reason"><span class="field__label">Alasan penyesuaian <span aria-hidden="true">*</span></span><textarea class="form-control" id="inventory-adjustment-reason" name="reason" rows="2" maxlength="240" required></textarea><span class="field-error" data-inventory-adjustment-error="reason"></span></label>
+        </div>
+        <div class="modal__footer inventory-form-footer"><button class="button button--secondary" type="button" data-close-inventory-dialog>Batal</button><button class="button button--primary" type="submit" id="inventory-adjustment-submit">Tambahkan mutasi</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal inventory-discard-dialog" id="inventory-discard-dialog" aria-labelledby="inventory-discard-title" aria-describedby="inventory-discard-description">
+      <div class="modal__header"><span class="modal__icon" aria-hidden="true">!</span><button class="icon-button modal__close" type="button" data-stay-inventory aria-label="Tetap mengedit"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <span class="section-heading__eyebrow">PERUBAHAN BELUM DISIMPAN</span><h2 id="inventory-discard-title">Buang perubahan?</h2><p id="inventory-discard-description">Form stok memiliki perubahan yang belum disimpan.</p>
+      <div class="modal__footer"><button class="button button--secondary" type="button" data-stay-inventory>Tetap Mengedit</button><button class="button button--primary" type="button" data-discard-inventory>Buang Perubahan</button></div>
+    </dialog>
+
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

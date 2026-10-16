@@ -1,0 +1,102 @@
+<body>
+<section class="page-content inventory-page" id="inventory" data-page-view="inventory" aria-labelledby="inventory-title" hidden>
+            <div class="page-heading">
+              <div>
+              <div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>PERSEDIAAN · KONTROL BATCH</div>
+                <h1 id="inventory-title">Persediaan &amp; Batch</h1>
+                <p class="page-heading__description">Saldo ledger, ringkasan, dan status kedaluwarsa dihitung per <time id="inventory-effective-date">tanggal ini</time> (Asia/Jakarta). Tanggal terima batch, waktu pencatatan, dan tanggal efektif mutasi dibedakan.</p>
+              </div>
+              <div class="heading-actions">
+                <span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span>
+                <button class="button button--secondary" type="button" data-open-inventory-adjustment>Penyesuaian stok</button>
+                <button class="button button--primary" type="button" data-open-inventory-opening><span aria-hidden="true">+</span> Catat batch / stok awal</button>
+              </div>
+            </div>
+
+            <section class="glass-card inventory-provision-banner" aria-label="Penyiapan data demonstrasi">
+              <div><strong>Data operasional simulasi lima cabang</strong><p>Profil baru menyiapkan stok dan transaksi simulasi. Browser existing tidak berubah saat startup; Admin Pusat dapat meninjau dan mengonfirmasi provisioning stok terlebih dahulu, lalu transaksi pada langkah terpisah.</p><p id="inventory-presentation-seed-notice" class="inventory-presentation-seed-notice" role="status" hidden></p></div>
+              <div class="inventory-provision-banner__actions"><button class="button button--secondary" type="button" data-open-demo-provision>Pratinjau stok</button><button class="button button--primary" type="button" data-open-presentation-sales>Pratinjau transaksi</button></div>
+            </section>
+
+            <div class="inventory-storage-error glass-card" id="inventory-storage-error" role="alert" hidden>
+              <strong>Data persediaan tidak dapat dimuat.</strong>
+              <span data-inventory-error-message></span>
+              <button class="button button--secondary" type="button" data-retry-inventory>Coba lagi</button>
+            </div>
+
+            <section class="inventory-summary-grid" aria-label="Ringkasan stok terfilter">
+              <article class="glass-card inventory-summary-card"><span>Stok fisik</span><strong id="inventory-summary-physical">—</strong><small>Layak jual + karantina + rusak + kedaluwarsa</small></article>
+              <article class="glass-card inventory-summary-card inventory-summary-card--primary"><span>Layak jual</span><strong id="inventory-summary-sellable">—</strong><small>AVAILABLE dan belum kedaluwarsa</small></article>
+              <article class="glass-card inventory-summary-card"><span>Karantina / rusak</span><strong id="inventory-summary-held">—</strong><small id="inventory-summary-held-detail">QUARANTINE + DAMAGED</small></article>
+              <article class="glass-card inventory-summary-card inventory-summary-card--critical"><span>Kedaluwarsa</span><strong id="inventory-summary-expired">—</strong><small>Saldo kedaluwarsa; tidak masuk alokasi</small></article>
+              <article class="glass-card inventory-summary-card"><span>Dalam transit</span><strong id="inventory-summary-transit">—</strong><small>Saldo logistik terpisah dari stok fisik</small></article>
+            </section>
+
+            <section class="glass-card inventory-toolbar" aria-label="Filter persediaan">
+              <label class="field" for="inventory-warehouse-filter"><span class="field__label">Gudang / cakupan cabang</span><select class="select-control" id="inventory-warehouse-filter"><option value="all">Semua gudang</option></select></label>
+              <label class="field" for="inventory-product-filter"><span class="field__label">Produk</span><select class="select-control" id="inventory-product-filter"><option value="all">Semua produk</option></select></label>
+              <label class="field" for="inventory-bucket-filter"><span class="field__label">Kondisi stok</span><select class="select-control" id="inventory-bucket-filter"><option value="all">Semua kondisi</option><option value="AVAILABLE">Layak jual</option><option value="QUARANTINE">Karantina</option><option value="DAMAGED">Rusak</option><option value="EXPIRED">Kedaluwarsa</option><option value="IN_TRANSIT">Dalam transit</option></select></label>
+            </section>
+
+            <div class="inventory-workspace-grid">
+              <section class="glass-card inventory-list-card" aria-labelledby="inventory-batches-title">
+                <div class="inventory-card-heading"><div><h2 id="inventory-batches-title">Daftar batch</h2><p id="inventory-batch-count" aria-live="polite">Memuat saldo demo…</p></div><span class="badge badge--neutral">Saldo dari mutasi stok</span></div>
+                <div class="inventory-table-wrap" tabindex="0" aria-label="Tabel batch; geser horizontal pada layar kecil">
+                  <table class="inventory-table">
+                    <thead><tr><th scope="col">Produk / lot</th><th scope="col">Gudang / lokasi</th><th scope="col">Kedaluwarsa / rotasi</th><th scope="col">Layak jual</th><th scope="col">Kondisi lain</th><th scope="col"><span class="sr-only">Aksi</span></th></tr></thead>
+                    <tbody id="inventory-batch-table-body"></tbody>
+                  </table>
+                  <div class="empty-state inventory-empty" id="inventory-empty-state" hidden>
+                    <span class="empty-state__icon" aria-hidden="true">◇</span><h3>Tidak ada batch pada cakupan ini</h3><p>Ubah filter gudang, produk, atau kondisi untuk melihat saldo yang tersedia.</p>
+                    <button class="button button--secondary" type="button" data-clear-inventory-filters>Hapus filter</button>
+                  </div>
+                </div>
+              </section>
+
+              <aside class="glass-card inventory-simulator" aria-labelledby="inventory-simulator-title">
+                <div class="section-heading"><div><span class="section-heading__eyebrow">ALOKASI TANPA MUTASI</span><h2 id="inventory-simulator-title">Simulator rotasi batch</h2></div><span class="badge badge--neutral">Pratinjau</span></div>
+                <p class="inventory-simulator__intro">Saldo dibaca dari mutasi sampai tanggal efektif; urutan rotasi mengikuti kebijakan eksplisit batch. Simulasi tidak mengubah stok.</p>
+                <form id="inventory-simulator-form" class="inventory-simulator-form">
+                  <label class="field" for="inventory-simulator-product"><span class="field__label">Produk aktif</span><select class="select-control" id="inventory-simulator-product" name="product_id" required></select></label>
+                  <label class="field" for="inventory-simulator-warehouse"><span class="field__label">Gudang</span><select class="select-control" id="inventory-simulator-warehouse" name="warehouse_id" required></select></label>
+                  <div class="inventory-simulator-form__row"><label class="field" for="inventory-simulator-quantity"><span class="field__label">Jumlah unit</span><input class="form-control" id="inventory-simulator-quantity" name="quantity" type="number" min="1" step="1" value="6" required /></label><label class="field" for="inventory-simulator-date"><span class="field__label">Tanggal efektif</span><input class="form-control" id="inventory-simulator-date" name="effective_date" type="date" value="2026-10-12" required /></label></div>
+                  <button class="button button--secondary" type="submit">Simulasikan alokasi</button>
+                </form>
+                <div class="inventory-simulation-error" id="inventory-simulation-error" role="alert" tabindex="-1" hidden></div>
+                <div class="inventory-simulation-empty" id="inventory-simulation-empty" role="status">Hasil alokasi akan muncul di sini.</div>
+                <section class="inventory-simulation-result" id="inventory-simulation-result" aria-live="polite" aria-label="Hasil simulasi alokasi" hidden>
+                  <div class="inventory-simulation-result__summary"><span id="inventory-simulation-summary"></span><strong id="inventory-simulation-policy"></strong></div>
+                  <ol id="inventory-simulation-allocations"></ol>
+                  <p>Pratinjau saja. Tidak ada stok yang berubah.</p>
+                </section>
+              </aside>
+            </div>
+
+            <section class="glass-card inventory-movements-card" aria-labelledby="inventory-movements-title">
+              <div class="inventory-card-heading"><div><h2 id="inventory-movements-title">Riwayat mutasi stok</h2><p id="inventory-movement-count" aria-live="polite">Catatan baru ditambahkan; histori sebelumnya tetap.</p></div><button class="button button--quiet inventory-movement-scope" id="inventory-movement-scope" type="button" data-clear-inventory-batch hidden>Semua batch terfilter</button></div>
+              <div class="inventory-table-wrap" tabindex="0" aria-label="Tabel mutasi stok; geser horizontal pada layar kecil">
+                <table class="inventory-table inventory-movement-table"><thead><tr><th scope="col">Dicatat / efektif / referensi</th><th scope="col">Produk / lot</th><th scope="col">Jenis mutasi</th><th scope="col">Bucket</th><th scope="col">Perubahan</th><th scope="col">Alasan / aktor</th></tr></thead><tbody id="inventory-movement-table-body"></tbody></table>
+                <div class="empty-state inventory-movement-empty" id="inventory-movement-empty" hidden><span class="empty-state__icon" aria-hidden="true">↗</span><h3>Belum ada mutasi pada filter ini</h3><p>Saldo awal dan penyesuaian tersimpan sebagai catatan mutasi baru.</p></div>
+              </div>
+            </section>
+
+            <footer class="page-footer"><span>Saldo dihitung dari catatan mutasi; stok tidak diubah dari form produk.</span></footer>
+
+            <dialog class="modal inventory-dialog inventory-provision-dialog" id="inventory-demo-provision-dialog" aria-labelledby="inventory-demo-provision-title" aria-describedby="inventory-demo-provision-description">
+              <div class="modal__header"><div><span class="section-heading__eyebrow">STOK DEMO LINTAS CABANG</span><h2 id="inventory-demo-provision-title">Pratinjau stok POS</h2><p id="inventory-demo-provision-description">Tinjau batch dan opening movement yang akan ditambahkan melalui provisioning eksplisit.</p></div><button class="icon-button" type="button" data-close-demo-provision aria-label="Tutup pratinjau stok demo">Ã—</button></div>
+              <div id="inventory-demo-provision-error" class="inventory-form-error" role="alert" tabindex="-1" hidden></div>
+              <p id="inventory-demo-provision-summary" class="inventory-provision-summary"></p>
+              <ul id="inventory-demo-provision-branches" class="inventory-provision-branches"></ul>
+              <ul id="inventory-demo-provision-effects" class="inventory-provision-effects"></ul>
+              <div class="modal__footer"><button class="button button--secondary" type="button" data-close-demo-provision>Batal</button><button class="button button--primary" id="inventory-demo-provision-confirm" type="button">Konfirmasi provisioning stok</button></div>
+            </dialog>
+            <dialog class="modal inventory-dialog inventory-provision-dialog" id="inventory-presentation-sales-dialog" aria-labelledby="inventory-presentation-sales-title" aria-describedby="inventory-presentation-sales-description">
+              <div class="modal__header"><div><span class="section-heading__eyebrow">TRANSAKSI SIMULASI</span><h2 id="inventory-presentation-sales-title">Pratinjau data presentasi</h2><p id="inventory-presentation-sales-description">Transaksi dibuat melalui POS, pembayaran tunai simulasi, pengurangan ledger stok, dan shift yang ditutup.</p></div><button class="icon-button" type="button" data-close-presentation-sales aria-label="Tutup pratinjau transaksi">×</button></div>
+              <div id="inventory-presentation-sales-error" class="inventory-form-error" role="alert" tabindex="-1" hidden></div>
+              <p id="inventory-presentation-sales-summary" class="inventory-provision-summary"></p>
+              <ul id="inventory-presentation-sales-branches" class="inventory-provision-branches"></ul>
+              <ul id="inventory-presentation-sales-effects" class="inventory-provision-effects"></ul>
+              <div class="modal__footer"><button class="button button--secondary" type="button" data-close-presentation-sales>Batal</button><button class="button button--primary" id="inventory-presentation-sales-confirm" type="button">Konfirmasi transaksi simulasi</button></div>
+            </dialog>
+          </section>
+</body>

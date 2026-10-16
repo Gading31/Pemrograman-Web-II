@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi netral kategori tembakau">
+  <rect width="320" height="180" rx="24" fill="#e9e7e2"/><circle cx="160" cy="90" r="62" fill="#d5d2ca"/>
+  <rect x="96" y="67" width="128" height="46" rx="10" fill="#62706d"/><path d="M110 67h28v46h-28z" fill="#a8b2aa"/><path d="M168 67v46m16-46v46m16-46v46" stroke="#88938c" stroke-width="5"/>
+  <path d="M104 126h112" stroke="#8a938e" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi demo susu UHT</title><desc id="desc">Kotak susu ilustratif, bukan foto produk.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#fff2de"/><stop offset="1" stop-color="#ead9bd"/></linearGradient><linearGradient id="carton" x2="1"><stop stop-color="#fffdf2"/><stop offset="1" stop-color="#f4e8d2"/></linearGradient></defs>
+  <rect width="240" height="180" rx="22" fill="url(#bg)"/><ellipse cx="121" cy="153" rx="38" ry="7" fill="#6c5843" opacity=".16"/>
+  <path d="m90 49 30-20 30 20v86H90z" fill="url(#carton)" stroke="#c7b99c" stroke-width="3"/><path d="m90 49 30 12 30-12-30-20z" fill="#fff7e6" stroke="#c7b99c" stroke-width="2"/><path d="M120 60v75" stroke="#d5c5a8" stroke-width="2"/><path d="M94 83h52v25H94z" fill="#4793c8"/><path d="M96 49h48" stroke="#d8784d" stroke-width="5"/>
+  <text x="120" y="99" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">SUSU</text><text x="120" y="119" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#53677a">250 ml · DEMO</text>
+</svg>

@@ -1,0 +1,23 @@
+<body>
+<section class="page-content m6-page" id="transactions" data-page-view="transactions" aria-labelledby="transactions-title" hidden>
+            <div class="page-heading">
+              <div><div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>RIWAYAT PENJUALAN</div><h1 id="transactions-title">Riwayat Transaksi</h1><p class="page-heading__description">Cari transaksi selesai dan lihat rincian yang tersimpan saat pembayaran. Perubahan katalog tidak mengubah riwayat.</p></div>
+              <span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span>
+            </div>
+            <section class="glass-card m6-filter-grid" aria-label="Filter riwayat transaksi">
+              <label class="field" for="transaction-search"><span class="field__label">Cari nomor, SKU, atau produk</span><input class="form-control" id="transaction-search" type="search" placeholder="Contoh TRX-, PRD-001" autocomplete="off" /></label>
+              <label class="field" for="transaction-branch"><span class="field__label">Cabang</span><select class="select-control" id="transaction-branch"><option value="all">Semua cabang</option></select></label>
+              <label class="field" for="transaction-date-from"><span class="field__label">Dari tanggal</span><input class="form-control" id="transaction-date-from" type="date" aria-describedby="transaction-date-error" /></label>
+              <label class="field" for="transaction-date-to"><span class="field__label">Sampai tanggal</span><input class="form-control" id="transaction-date-to" type="date" aria-describedby="transaction-date-error" /></label>
+              <label class="field" for="transaction-status"><span class="field__label">Status transaksi</span><select class="select-control" id="transaction-status"><option value="all">Semua status</option><option value="completed">Selesai</option></select></label>
+              <label class="field" for="transaction-sort"><span class="field__label">Urutkan</span><select class="select-control" id="transaction-sort"><option value="created_at:desc">Waktu terbaru</option><option value="created_at:asc">Waktu terlama</option><option value="transaction_number:asc">Nomor A–Z</option><option value="net_total_idr:desc">Total terbesar</option><option value="net_total_idr:asc">Total terkecil</option></select></label>
+              <p id="transaction-date-error" class="m6-error m6-date-error" role="alert" hidden></p>
+            </section>
+            <section class="glass-card m6-table-card" aria-labelledby="transaction-table-title">
+              <div class="m6-card-heading"><div><span class="section-heading__eyebrow">ARSIP CHECKOUT</span><h2 id="transaction-table-title">Transaksi selesai</h2><p id="transaction-count" aria-live="polite">Memuat transaksi…</p></div><button class="button button--quiet" type="button" id="transaction-clear-filters">Hapus filter</button></div>
+              <div class="m6-table-wrap" tabindex="0" aria-label="Tabel riwayat transaksi; geser horizontal pada layar kecil"><table class="m6-table"><thead><tr><th scope="col">Nomor / waktu</th><th scope="col">Cabang</th><th scope="col">Item</th><th scope="col">Total</th><th scope="col">Pembayaran</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Aksi</span></th></tr></thead><tbody id="transaction-table-body"></tbody></table><div class="empty-state m6-empty" id="transaction-empty" hidden><span class="empty-state__icon" aria-hidden="true">⌕</span><h3>Tidak ada transaksi</h3><p>Ubah pencarian atau filter. Transaksi selesai akan muncul di sini.</p></div></div>
+              <div class="m6-pagination"><span id="transaction-page-label" aria-live="polite">Halaman 0 dari 0</span><div><button class="button button--secondary" type="button" id="transaction-page-prev">Sebelumnya</button><button class="button button--secondary" type="button" id="transaction-page-next">Berikutnya</button></div></div>
+            </section>
+            <footer class="page-footer"><span>Rincian transaksi lama tetap mengikuti data saat pembayaran.</span></footer>
+          </section>
+</body>

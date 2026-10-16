@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi produk demo</title><desc id="desc">Placeholder kemasan generik, bukan foto produk.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e8eef4"/><stop offset="1" stop-color="#d5e1eb"/></linearGradient></defs>
+  <rect width="240" height="180" rx="22" fill="url(#bg)"/><ellipse cx="120" cy="149" rx="42" ry="7" fill="#53687a" opacity=".13"/><path d="m91 45 29-15 29 15v89H91z" fill="#f8fbfc" stroke="#91a7b5" stroke-width="3"/><path d="M91 70h58v31H91z" fill="#8aa5b6"/><path d="M101 82h38M107 91h26" stroke="#f6fbff" stroke-width="3" stroke-linecap="round"/><text x="120" y="119" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#506676">ILUSTRASI DEMO</text>
+</svg>

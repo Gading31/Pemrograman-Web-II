@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi demo mi instan</title><desc id="desc">Bungkus mi instan ilustratif, bukan foto produk.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e9f2dc"/><stop offset="1" stop-color="#d3e5cc"/></linearGradient><linearGradient id="pack" x2="0" y2="1"><stop stop-color="#4f9b58"/><stop offset="1" stop-color="#26714a"/></linearGradient></defs>
+  <rect width="240" height="180" rx="22" fill="url(#bg)"/><ellipse cx="120" cy="151" rx="51" ry="7" fill="#315d3a" opacity=".16"/>
+  <path d="m74 44 90-8 9 82-86 12z" fill="url(#pack)" stroke="#276144" stroke-width="3"/><path d="m88 63 60-5 20 27-29 22-46-8z" fill="#f6d865"/><path d="M96 80c14-18 29 23 45 1M98 89c18 13 28-20 43-6" fill="none" stroke="#e8a332" stroke-width="4" stroke-linecap="round"/>
+  <text x="121" y="47" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#fff7d8">MI GORENG</text><text x="122" y="119" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#fff7d8">ILUSTRASI DEMO</text>
+</svg>

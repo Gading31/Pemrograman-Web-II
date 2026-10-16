@@ -1,0 +1,100 @@
+<body>
+<section class="page-content pricing-page" id="pricing" data-page-view="pricing" aria-labelledby="pricing-title" hidden>
+            <div class="page-heading">
+              <div>
+              <div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>ATURAN HARGA PER WILAYAH</div>
+                <h1 id="pricing-title">Aturan Harga Regional</h1>
+                <p class="page-heading__description">Atur persentase harga reguler per wilayah dan kategori, lalu uji berdasarkan tanggal efektif.</p>
+              </div>
+              <div class="heading-actions">
+                <span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span>
+                <button class="button button--primary" type="button" data-open-pricing-rule><span aria-hidden="true">+</span> Tambah aturan</button>
+              </div>
+            </div>
+
+            <div class="pricing-storage-error glass-card" id="pricing-storage-error" role="alert" hidden>
+              <strong>Aturan harga tidak dapat dimuat.</strong>
+              <span data-pricing-error-message></span>
+              <button class="button button--secondary" type="button" data-retry-pricing>Coba lagi</button>
+            </div>
+
+            <section class="glass-card pricing-coverage" id="pricing-coverage" aria-label="Cakupan aturan pada tanggal demo">
+              <span class="pricing-coverage__icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.2"/></svg></span>
+              <div class="pricing-coverage__copy"><strong id="pricing-coverage-title">20 dari 20 kombinasi terpetakan</strong><span id="pricing-coverage-detail">Aturan aktif pada tanggal demo 12 Okt 2026.</span></div>
+              <span class="badge badge--success" id="pricing-rule-total">8 aturan</span>
+              <p class="pricing-coverage__note" role="note">Tarif awal Medan, Surabaya, dan Makassar adalah konfigurasi simulasi proyek, bukan data pasar.</p>
+            </section>
+
+            <div class="pricing-layout">
+              <div class="pricing-main-column">
+                <section class="glass-card pricing-toolbar" aria-label="Pencarian dan filter aturan harga">
+                  <label class="field pricing-search" for="pricing-search">
+                    <span class="field__label">Cari wilayah, kategori, atau ID aturan</span>
+                    <span class="field__control"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8" stroke="currentColor" stroke-width="1.5"/><path d="m13.2 13.2 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><input id="pricing-search" type="search" autocomplete="off" placeholder="Contoh: Jakarta atau CAT-SNACK" aria-controls="pricing-rule-table-body"/></span>
+                  </label>
+                  <label class="field" for="pricing-region-filter"><span class="field__label">Wilayah</span><select class="select-control" id="pricing-region-filter"><option value="all">Semua wilayah</option></select></label>
+                  <label class="field" for="pricing-category-filter"><span class="field__label">Kategori</span><select class="select-control" id="pricing-category-filter"><option value="all">Semua kategori</option></select></label>
+                  <label class="field" for="pricing-status-filter"><span class="field__label">Status</span><select class="select-control" id="pricing-status-filter"><option value="all">Semua status</option><option value="active">Aktif</option><option value="inactive">Nonaktif</option></select></label>
+                </section>
+
+                <section class="glass-card pricing-rule-card" aria-labelledby="pricing-list-title">
+                  <div class="pricing-rule-card__heading">
+                    <div><h2 id="pricing-list-title">Daftar aturan</h2><p id="pricing-result-count" aria-live="polite">Memuat aturan demo...</p></div>
+                    <span class="badge badge--neutral">Periode inklusif</span>
+                  </div>
+                  <div class="pricing-table-wrap" tabindex="0" aria-label="Tabel aturan harga; geser horizontal pada layar kecil">
+                    <table class="pricing-table">
+                      <thead><tr>
+                        <th scope="col">Wilayah</th><th scope="col">Kategori</th><th scope="col">Penyesuaian</th><th scope="col">Berlaku</th><th scope="col">Status / Versi</th><th scope="col"><span class="sr-only">Aksi</span></th>
+                      </tr></thead>
+                      <tbody id="pricing-rule-table-body"></tbody>
+                    </table>
+                    <div class="empty-state pricing-empty" id="pricing-empty-state" hidden>
+                      <span class="empty-state__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><circle cx="13.5" cy="13.5" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="m20 20 6.5 6.5M10 13.5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                      <h3>Tidak ada aturan yang cocok</h3><p>Ubah kata pencarian atau filter untuk melihat aturan lain.</p>
+                      <button class="button button--secondary" type="button" data-clear-pricing-filters>Hapus filter</button>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <aside class="pricing-side-column" aria-label="Simulator dan catatan aturan harga">
+                <section class="glass-card pricing-simulator" aria-labelledby="pricing-simulator-title">
+                  <div class="section-heading">
+                    <div><span class="section-heading__eyebrow">UJI HARGA REGULER</span><h2 id="pricing-simulator-title">Simulator Harga</h2></div>
+                    <span class="badge badge--neutral">Simulasi lokal</span>
+                  </div>
+                  <p class="pricing-simulator__intro">Pilih produk, cabang, dan tanggal. Wilayah harga diturunkan dari cabang yang dipilih.</p>
+                  <form id="pricing-simulator-form" class="pricing-simulator-form">
+                    <label class="field" for="pricing-simulator-product"><span class="field__label">Produk aktif</span><select class="select-control" id="pricing-simulator-product" name="product_id" required></select></label>
+                    <label class="field" for="pricing-simulator-branch"><span class="field__label">Cabang</span><select class="select-control" id="pricing-simulator-branch" name="branch_id" required></select></label>
+                    <label class="field" for="pricing-simulator-date"><span class="field__label">Tanggal efektif</span><input class="form-control" id="pricing-simulator-date" name="effective_date" type="date" value="2026-10-12" required aria-describedby="pricing-simulator-date-hint"/><span class="field__hint" id="pricing-simulator-date-hint">Tanggal demo: 12 Oktober 2026.</span></label>
+                    <button class="button button--secondary pricing-simulator__submit" type="submit">Hitung harga</button>
+                  </form>
+                  <div class="pricing-simulation-error" id="pricing-simulation-error" role="alert" hidden></div>
+                  <div class="pricing-simulation-empty" id="pricing-simulation-empty" role="status">Hasil simulasi akan muncul di sini. Aturan yang tidak ditemukan akan ditampilkan sebagai error konfigurasi.</div>
+                  <section class="pricing-quote" id="pricing-quote" aria-live="polite" aria-label="Hasil simulasi harga" hidden>
+                    <div class="pricing-quote__heading"><span>HARGA REGULER</span><strong id="pricing-quote-product"></strong></div>
+                    <dl class="pricing-quote__details">
+                      <div><dt>Cabang / wilayah</dt><dd id="pricing-quote-branch"></dd></div>
+                      <div><dt>Kategori</dt><dd id="pricing-quote-category"></dd></div>
+                      <div><dt>Harga dasar pusat</dt><dd id="pricing-quote-base"></dd></div>
+                      <div><dt>Penyesuaian aturan</dt><dd id="pricing-quote-adjustment"></dd></div>
+                      <div><dt>Aturan / versi</dt><dd id="pricing-quote-rule"></dd></div>
+                      <div><dt>Periode aturan</dt><dd id="pricing-quote-period"></dd></div>
+                    </dl>
+                    <div class="pricing-quote__total"><span>Harga akhir</span><strong id="pricing-quote-total"></strong><small>Pembulatan ke rupiah terdekat</small></div>
+                  </section>
+                </section>
+
+                <section class="glass-card pricing-integrity-note" aria-labelledby="pricing-integrity-title">
+                  <div class="pricing-integrity-note__heading"><span aria-hidden="true">i</span><div><span class="section-heading__eyebrow">INTEGRITAS KONFIGURASI</span><h2 id="pricing-integrity-title">Aturan hilang bukan 0%</h2></div></div>
+                  <p>Harga hanya dapat dihitung jika ada aturan aktif untuk wilayah, kategori, dan tanggal tersebut. Nilai 0% sah jika disimpan secara eksplisit. Periode tanggal awal dan akhir dihitung inklusif.</p>
+                  <p class="pricing-integrity-note__local">Penyimpanan demo berada di browser ini. Autentikasi, izin pusat, sinkronisasi cabang, promosi, dan override belum tersedia.</p>
+                </section>
+              </aside>
+            </div>
+
+            <footer class="page-footer"><span>Perubahan aturan harga tersimpan di browser ini.</span></footer>
+          </section>
+</body>

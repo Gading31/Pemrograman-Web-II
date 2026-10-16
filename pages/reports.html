@@ -1,0 +1,30 @@
+<body>
+<section class="page-content reports-page" id="reports" data-page-view="reports" aria-labelledby="reports-title" hidden>
+            <div class="page-heading">
+              <div><div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>RINGKASAN PENJUALAN</div><h1 id="reports-title">Laporan Penjualan</h1><p class="page-heading__description">Rekap baca-saja transaksi selesai berdasarkan tanggal efektif Asia/Jakarta dan nilai saat pembayaran.</p></div>
+              <div class="heading-actions"><span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span><button class="button button--primary" id="report-export" type="button">Ekspor CSV</button></div>
+            </div>
+            <section class="glass-card report-filter-card" aria-label="Filter Laporan Penjualan">
+              <div class="report-filter-card__intro"><strong>Filter laporan</strong><span>Ekspor mengikuti cabang, rentang tanggal, kelompok, dan urutan terpilih.</span></div>
+              <label class="field"><span class="field__label">Cabang</span><select class="field__input" id="report-branch"><option value="all">Semua cabang</option></select></label>
+              <label class="field"><span class="field__label">Dari tanggal</span><input class="field__input" id="report-date-from" type="date" /></label>
+              <label class="field"><span class="field__label">Sampai tanggal</span><input class="field__input" id="report-date-to" type="date" /></label>
+              <label class="field"><span class="field__label">Rekap</span><select class="field__input" id="report-group"><option value="day">Per hari</option><option value="product">Per produk</option><option value="branch">Per cabang</option></select></label>
+              <label class="field"><span class="field__label">Urutkan</span><select class="field__input" id="report-sort"><option value="net:desc">Omzet bersih · terbesar</option><option value="net:asc">Omzet bersih · terkecil</option><option value="transactions:desc">Transaksi · terbanyak</option><option value="units:desc">Unit · terbanyak</option><option value="name:asc">Nama · A–Z</option></select></label>
+              <p class="report-filter-error" id="report-date-error" role="alert" hidden></p>
+            </section>
+            <section class="report-kpi-grid" aria-label="Metrik Laporan Penjualan">
+              <article class="glass-card report-kpi"><span>Omzet kotor</span><strong id="report-gross">Rp0</strong><small>Dari item transaksi selesai</small></article>
+              <article class="glass-card report-kpi"><span>Diskon</span><strong id="report-discount">Rp0</strong><small>Diskon saat pembayaran</small></article>
+              <article class="glass-card report-kpi report-kpi--accent"><span>Omzet bersih</span><strong id="report-net">Rp0</strong><small>Tidak memakai tender atau saldo kas</small></article>
+              <article class="glass-card report-kpi"><span>Transaksi · unit</span><strong><span id="report-transactions">0</span><small> transaksi</small></strong><small><span id="report-units">0</span> unit terjual</small></article>
+            </section>
+            <section class="glass-card report-panel report-table-panel" aria-labelledby="report-table-title">
+              <div class="section-heading"><div><span class="section-heading__eyebrow">REKAP PENJUALAN</span><h2 id="report-table-title">Ringkasan per hari</h2></div><span class="badge badge--neutral" id="report-row-count">0 baris</span></div>
+              <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel laporan penjualan, dapat digulir mendatar"><table class="report-table"><thead id="report-table-head"></thead><tbody id="report-table-body"></tbody></table></div>
+              <div class="report-empty-state" id="report-empty" hidden><span class="empty-state__icon" aria-hidden="true">—</span><strong>Tidak ada transaksi selesai</strong><p>Angka penjualan tetap nol. Ubah rentang tanggal atau cabang untuk melihat laporan.</p></div>
+            </section>
+            <aside class="report-source-note" id="report-source-note" aria-live="polite"></aside>
+            <footer class="page-footer"><span>Rekap hanya memuat transaksi selesai. Pengembalian barang belum termasuk.</span></footer>
+          </section>
+</body>

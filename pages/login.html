@@ -1,0 +1,41 @@
+<body>
+<section class="auth-view login-view" id="login" data-page-view="login" aria-labelledby="login-title" hidden>
+  <div class="login-view__ambient" aria-hidden="true"></div>
+  <header class="login-view__topbar">
+    <a class="login-brand" href="#login" aria-label="Nusantara POS, halaman masuk">
+      <span class="login-brand__mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 13.5 16 5l11 8.5v13H5v-13Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 26.5v-8h10v8M10 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <span><strong>Nusantara POS</strong><small>Operasional toko</small></span>
+    </a>
+    <button class="icon-button theme-toggle login-theme-toggle" type="button" data-theme-toggle aria-label="Ganti ke tema terang" aria-pressed="true" title="Ganti tema">
+      <svg class="theme-icon theme-icon--sun" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 1.8v2m0 12.4v2M1.8 10h2m12.4 0h2M4.2 4.2l1.4 1.4m8.8 8.8 1.4 1.4m0-11.6-1.4 1.4m-8.8 8.8-1.4 1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <svg class="theme-icon theme-icon--moon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16.6 12.4A7 7 0 0 1 7.6 3.4 7.4 7.4 0 1 0 16.6 12.4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    </button>
+  </header>
+  <div class="login-view__content">
+    <section class="login-intro" aria-label="Tentang demo Nusantara POS">
+      <span class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>ADMIN PANEL POS MULTI-CABANG</span>
+      <h1 id="login-title">Satu pusat untuk operasional toko.</h1>
+      <p>Masuk dengan akun presentasi untuk membuka halaman sesuai peran dan cabang.</p>
+      <div class="login-intro__note"><span class="status-dot" aria-hidden="true"></span><span><strong>Data Simulasi</strong><small>Data tersimpan lokal pada browser ini.</small></span></div>
+    </section>
+    <section class="glass-card login-card" aria-labelledby="login-card-title">
+      <div class="login-card__heading"><span class="section-heading__eyebrow">AKUN PRESENTASI</span><h2 id="login-card-title">Masuk ke akun</h2><p>Pilih petunjuk akun untuk mengisi nama pengguna, lalu masukkan kata sandi yang berlaku.</p></div>
+      <form id="login-form" novalidate>
+        <div class="login-error" id="login-error" role="alert" tabindex="-1" hidden></div>
+        <label class="field" for="login-username"><span class="field__label">Nama pengguna</span><input class="form-control" id="login-username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required aria-describedby="login-username-hint"/><span class="field__hint" id="login-username-hint">Nama pengguna akun simulasi.</span></label>
+        <label class="field" for="login-password"><span class="field__label">Kata sandi</span><span class="login-password-field"><input class="form-control" id="login-password" name="password" type="password" autocomplete="current-password" required/><button class="button button--quiet login-password-toggle" type="button" data-password-toggle aria-pressed="false">Tampilkan</button></span></label>
+        <button class="button button--primary login-submit" type="submit">Masuk</button>
+      </form>
+      <details class="login-demo-accounts">
+        <summary>Petunjuk akun presentasi</summary>
+        <div class="login-demo-accounts__list" id="login-demo-accounts-list" role="list" aria-label="Akun presentasi aktif"></div>
+        <p class="login-demo-help" id="login-demo-accounts-empty" role="status" hidden></p>
+        <p class="login-demo-help" id="login-demo-selection" role="status" aria-live="polite" hidden></p>
+        <p class="login-demo-help">Kata sandi tidak ditampilkan atau diisi otomatis. Mintalah kata sandi presentasi yang berlaku kepada Admin Pusat.</p>
+      </details>
+      <p class="login-disclaimer">Akses berbasis role ini hanya simulasi frontend. Jangan gunakan kata sandi pribadi atau data operasional nyata; aplikasi tidak menyediakan autentikasi atau kontrol akses produksi.</p>
+    </section>
+  </div>
+  <footer class="login-view__footer"><span>Nusantara POS</span><span>Frontend presentasi · bukan sistem produksi</span></footer>
+</section>
+</body>

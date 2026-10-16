@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi kategori kebersihan rumah">
+  <rect width="320" height="180" rx="24" fill="#e7eff5"/><circle cx="160" cy="90" r="62" fill="#c9dce9"/>
+  <path d="M117 64h40v64h-40z" rx="8" fill="#f8fbfd" stroke="#4b819f" stroke-width="4"/><path d="M125 51h24v14h-24z" fill="#4b819f"/><path d="M125 90h24" stroke="#83abc0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M180 122l25-63 24 9-25 63-24-9z" fill="#7ca7bd"/><path d="M202 58l5-14 18 7-5 14" fill="#4b819f"/>
+</svg>

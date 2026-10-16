@@ -1,0 +1,36 @@
+<body>
+<section class="page-content distribution-page" id="distribution" data-page-view="distribution" aria-labelledby="distribution-title" hidden>
+            <div class="page-heading distribution-heading">
+              <div><div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>PERSEDIAAN ANTAR GUDANG</div><h1 id="distribution-title">Permintaan &amp; Distribusi</h1><p class="page-heading__description">Permintaan cabang, alokasi batch dari gudang pusat, pengiriman, dan penerimaan dicatat berurutan.</p></div>
+              <span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span>
+            </div>
+            <aside class="distribution-demo-notice" role="note"><strong>Simulasi frontend:</strong> aktor HQ dan cabang dapat dipilih untuk demonstrasi alur. Ini bukan kontrol RBAC produksi dan tidak menyinkronkan antarperangkat.</aside>
+            <div class="distribution-overview-grid">
+              <section class="glass-card distribution-actor-card" aria-labelledby="distribution-actor-title">
+                <label class="field" for="distribution-actor"><span class="field__label" id="distribution-actor-title">Aktor saat ini</span><select class="select-control" id="distribution-actor"><option value="branch-jkt">Petugas Cabang Jakarta</option><option value="branch-bdg">Petugas Cabang Bandung</option><option value="hq">Admin Pusat</option></select><span class="field__hint">Pilihan ini hanya mengganti konteks presentasi dan label aktor.</span></label>
+              </section>
+              <section class="glass-card distribution-stock-card" aria-labelledby="distribution-stock-title"><div class="distribution-section-heading"><div><span class="section-heading__eyebrow">SALDO PUSAT</span><h2 id="distribution-stock-title">Stok tersedia untuk alokasi</h2><p id="distribution-stock-date">Saldo ledger gudang pusat · tanggal efektif Asia/Jakarta</p></div></div><div id="distribution-stock-summary" class="distribution-stock-summary" aria-live="polite"></div></section>
+            </div>
+            <section class="glass-card distribution-request-form-card" id="distribution-request-panel" aria-labelledby="distribution-request-form-title">
+              <div class="distribution-section-heading"><div><span class="section-heading__eyebrow">PERMINTAAN CABANG</span><h2 id="distribution-request-form-title">Buat permintaan stok</h2><p>Permintaan baru tidak mengubah saldo gudang pusat maupun cabang.</p></div></div>
+              <form id="distribution-request-form" class="distribution-request-form" novalidate>
+                <label class="field" for="distribution-request-branch"><span class="field__label">Cabang tujuan</span><select class="select-control" id="distribution-request-branch" required></select></label>
+                <div class="distribution-request-lines" id="distribution-request-lines" aria-label="Produk yang diminta"></div>
+                <button class="button button--quiet distribution-add-line" type="button" id="distribution-add-line">Tambah produk</button>
+                <label class="field distribution-reason-field" for="distribution-request-reason"><span class="field__label">Alasan permintaan</span><textarea class="form-control" id="distribution-request-reason" rows="2" maxlength="240" required placeholder="Contoh: stok rak menipis untuk kebutuhan pekan ini"></textarea></label>
+                <div class="distribution-form-actions"><p id="distribution-request-error" class="distribution-error" role="alert" hidden></p><button class="button button--primary" type="submit" id="distribution-request-submit">Kirim permintaan</button></div>
+              </form>
+            </section>
+            <section class="glass-card distribution-list-card" aria-labelledby="distribution-list-title">
+              <div class="distribution-section-heading distribution-list-heading"><div><span class="section-heading__eyebrow">ALUR DOKUMEN</span><h2 id="distribution-list-title">Permintaan dan pengiriman</h2><p id="distribution-count" aria-live="polite">Memuat dokumen distribusi…</p></div></div>
+              <div class="distribution-filter-grid">
+                <label class="field" for="distribution-search"><span class="field__label">Cari dokumen / SKU / produk</span><input class="form-control" id="distribution-search" type="search" placeholder="Nomor permintaan, SKU, nama" /></label>
+                <label class="field" for="distribution-filter-branch"><span class="field__label">Cabang</span><select class="select-control" id="distribution-filter-branch"><option value="all">Semua cabang</option></select></label>
+                <label class="field" for="distribution-filter-status"><span class="field__label">Status</span><select class="select-control" id="distribution-filter-status"><option value="all">Semua status</option><option value="requested">Diminta</option><option value="approved">Disetujui</option><option value="partially_approved">Disetujui sebagian</option><option value="rejected">Ditolak</option><option value="allocated">Draft alokasi</option><option value="shipped">Dikirim</option><option value="in_transit">Dalam transit</option><option value="partially_received">Diterima sebagian</option><option value="received">Diterima</option><option value="reconciled">Direkonsiliasi</option></select></label>
+              </div>
+              <div class="distribution-table-wrap" tabindex="0" aria-label="Tabel permintaan distribusi; geser horizontal pada layar kecil"><table class="distribution-table"><thead><tr><th scope="col">Nomor / waktu</th><th scope="col">Cabang</th><th scope="col">Produk / jumlah</th><th scope="col">Status terkini</th><th scope="col"><span class="sr-only">Aksi</span></th></tr></thead><tbody id="distribution-table-body"></tbody></table><div class="empty-state distribution-empty" id="distribution-empty" hidden><span class="empty-state__icon" aria-hidden="true">⇄</span><h3>Tidak ada permintaan</h3><p>Ubah filter atau buat permintaan demo dari konteks petugas cabang.</p></div></div>
+            </section>
+            <section class="glass-card distribution-detail-card" id="distribution-detail-card" aria-labelledby="distribution-detail-title" hidden><div class="distribution-section-heading"><div><span class="section-heading__eyebrow">DETAIL DOKUMEN &amp; RIWAYAT</span><h2 id="distribution-detail-title">Pilih permintaan distribusi</h2><p id="distribution-detail-summary">Status, alokasi batch, penerimaan, dan selisih ditampilkan dari catatan tersimpan.</p></div><span class="badge badge--neutral" id="distribution-detail-status">Belum dipilih</span></div><div id="distribution-detail-content"></div></section>
+            <footer class="page-footer"><span>Draft tidak mengubah stok. Saldo berubah saat pengiriman dan penerimaan dicatat.</span></footer>
+          </section>
+</body>

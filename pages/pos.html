@@ -1,0 +1,87 @@
+<body>
+<section class="page-content pos-page" id="pos" data-page-view="pos" aria-labelledby="pos-title" hidden>
+            <div class="page-heading pos-heading">
+              <div class="page-heading__copy">
+              <div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>PENJUALAN TUNAI · POS</div>
+                <h1 id="pos-title">Kasir / POS</h1>
+              <p class="page-heading__description">Cari produk, tinjau harga dan batch, lalu selesaikan transaksi tunai.</p>
+              </div>
+              <span class="badge badge--warning"><span class="status-dot"></span>Data Simulasi</span>
+            </div>
+
+            <section class="glass-card pos-shift-bar" aria-label="Konteks cabang dan shift kasir">
+              <div class="pos-shift-bar__branch">
+                <label class="field" for="pos-branch-select"><span class="field__label">Cabang kasir</span>
+                  <select class="select-control" id="pos-branch-select" aria-label="Cabang kasir"></select>
+                </label>
+              </div>
+              <div class="pos-shift-state" id="pos-shift-state" aria-live="polite"></div>
+              <button class="button button--primary" id="pos-open-shift" type="button">Buka shift</button>
+            </section>
+
+            <div class="pos-layout">
+              <section class="glass-card pos-catalog" aria-labelledby="pos-catalog-title">
+                <div class="pos-card-heading">
+                  <div><span class="section-heading__eyebrow">KATALOG CABANG</span><h2 id="pos-catalog-title">Pilih produk</h2></div>
+                  <span class="badge badge--neutral" id="pos-product-count">0 produk</span>
+                </div>
+                <p class="pos-image-note" id="pos-image-note">Foto unggahan ditampilkan; produk tanpa foto memakai ilustrasi demo.</p>
+                <div class="pos-catalog-tools">
+                <label class="field pos-search-field" for="pos-product-search">
+                  <span class="field__label">Pencarian produk</span>
+                  <span class="field__control"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8" stroke="currentColor" stroke-width="1.5"/><path d="m13.2 13.2 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <input class="form-control" id="pos-product-search" type="search" autocomplete="off" placeholder="Nama, SKU, atau barcode" aria-describedby="pos-search-hint" aria-controls="pos-product-list" />
+                  </span>
+                  <span class="field__hint" id="pos-search-hint">Pindai barcode USB · Webcam belum tersedia.</span>
+                </label>
+                <label class="field pos-category-field" for="pos-category-filter">
+                  <span class="field__label">Kategori</span>
+                  <select class="select-control" id="pos-category-filter" aria-controls="pos-product-list">
+                    <option value="">Semua kategori</option>
+                  </select>
+                </label>
+                </div>
+                <div class="pos-catalog-error" id="pos-catalog-error" role="alert" hidden></div>
+                <div class="pos-product-list" id="pos-product-list" aria-live="polite"></div>
+                <div class="empty-state pos-empty" id="pos-product-empty" hidden>
+                  <button class="button button--secondary pos-clear-filters" id="pos-clear-filters" type="button" hidden>Hapus pencarian dan filter</button>
+                  <span class="empty-state__icon" aria-hidden="true">⌕</span><h3>Produk tidak ditemukan</h3><p>Periksa nama, SKU, atau barcode yang Anda masukkan.</p>
+                </div>
+              </section>
+
+              <button class="pos-cart-backdrop" id="pos-cart-backdrop" type="button" aria-label="Tutup keranjang" tabindex="-1" hidden></button>
+              <aside class="glass-card pos-checkout" aria-labelledby="pos-cart-title">
+                <button class="pos-mobile-cart-toggle" id="pos-mobile-cart-toggle" type="button" aria-expanded="false" aria-controls="pos-checkout-content" hidden>
+                  <span class="pos-mobile-cart-toggle__summary"><strong id="pos-mobile-cart-count">0 unit dalam keranjang</strong><span>Total <b id="pos-mobile-cart-total">Rp0</b></span></span>
+                  <span class="pos-mobile-cart-toggle__action" id="pos-mobile-cart-action">Buka keranjang</span>
+                </button>
+                <div class="pos-checkout-content" id="pos-checkout-content">
+                <div class="pos-card-heading pos-cart-heading">
+                  <div><span class="section-heading__eyebrow">KERANJANG AKTIF</span><h2 id="pos-cart-title">Keranjang</h2></div>
+                  <div class="pos-cart-heading__actions"><span class="badge badge--neutral" id="pos-cart-count">0 unit</span><button class="button button--quiet pos-clear-button" id="pos-clear-cart" type="button" disabled>Kosongkan</button></div>
+                </div>
+                <div class="pos-cart-list" id="pos-cart-list"></div>
+                <div class="empty-state pos-cart-empty" id="pos-cart-empty">
+                  <span class="empty-state__icon" aria-hidden="true">＋</span><h3>Keranjang masih kosong</h3><p>Pilih produk dari katalog untuk membuat pratinjau harga dan batch.</p>
+                </div>
+                <div class="pos-checkout-error" id="pos-checkout-error" role="alert" tabindex="-1" hidden></div>
+                <div class="pos-total-block" id="pos-total-block" hidden>
+                  <div class="pos-total-row"><span>Subtotal harga reguler</span><strong id="pos-subtotal">Rp0</strong></div>
+                  <div class="pos-total-row pos-total-row--discount"><span>Diskon batch SNK-A</span><strong id="pos-discount">−Rp0</strong></div>
+                  <div class="pos-total-final"><span>Total tunai</span><strong id="pos-total">Rp0</strong></div>
+                </div>
+                <div class="pos-payment" id="pos-payment" hidden>
+                  <label class="field" for="pos-cash-received"><span class="field__label">Tunai diterima (IDR)</span><input class="form-control pos-cash-input" id="pos-cash-received" type="number" min="0" step="1" inputmode="numeric" placeholder="Masukkan nominal rupiah" aria-describedby="pos-cash-hint"/><span class="field__hint" id="pos-cash-hint">Pembayaran lain belum tersedia. Nilai kembalian dihitung dari total neto.</span></label>
+                  <div class="pos-change-row"><span>Kembalian</span><strong id="pos-change">Rp0</strong></div>
+                </div>
+                <div class="pos-cart-actions">
+                  <button class="button button--secondary" id="pos-preview-receipt" type="button" disabled>Pratinjau struk</button>
+                  <button class="button button--primary pos-pay-button" id="pos-checkout-submit" type="button" disabled>Bayar tunai &amp; selesaikan</button>
+                </div>
+                <p class="pos-keyboard-hint"><kbd>F2</kbd> Tunai <span aria-hidden="true">·</span> <kbd>F4</kbd> Cari produk <span aria-hidden="true">·</span> <kbd>Ctrl</kbd>+<kbd>Backspace</kbd> Kosongkan</p>
+                </div>
+              </aside>
+            </div>
+            <footer class="page-footer"><span>Transaksi tunai dan perubahan persediaan dicatat bersama di browser ini.</span></footer>
+          </section>
+</body>

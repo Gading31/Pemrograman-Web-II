@@ -1,0 +1,57 @@
+<body>
+<section class="page-content products-page" id="products" data-page-view="products" aria-labelledby="products-title" hidden>
+            <div class="page-heading">
+              <div>
+              <div class="eyebrow"><span class="eyebrow__mark" aria-hidden="true"></span>KATALOG PRODUK</div>
+                <h1 id="products-title">Master Produk</h1>
+              <p class="page-heading__description">Kelola informasi dan harga dasar produk. Gambar bawaan berupa ilustrasi, bukan foto produk. Perubahan tersimpan di browser ini.</p>
+              </div>
+              <div class="heading-actions">
+                <span class="simulation-badge"><span class="simulation-badge__dot" aria-hidden="true"></span>Data Simulasi</span>
+                <button class="button button--secondary" type="button" data-open-reset>Reset data demo</button>
+                <button class="button button--primary" type="button" data-open-product-form><span aria-hidden="true">+</span> Tambah produk</button>
+              </div>
+            </div>
+
+            <div class="products-error glass-card" id="products-storage-error" role="alert" hidden>
+              <strong>Data katalog tidak dapat dimuat.</strong>
+              <span data-products-error-message></span>
+              <button class="button button--secondary" type="button" data-retry-products>Coba lagi</button>
+            </div>
+
+            <section class="glass-card product-toolbar" aria-label="Pencarian dan filter produk">
+              <label class="field product-search" for="product-search">
+                <span class="field__label">Cari nama, SKU, atau barcode</span>
+                <span class="field__control"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8" stroke="currentColor" stroke-width="1.5" /><path d="m13.2 13.2 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg><input id="product-search" type="search" autocomplete="off" placeholder="Contoh: PRD-001" aria-controls="product-table-body" /></span>
+              </label>
+              <label class="field" for="product-category-filter"><span class="field__label">Kategori</span><select class="select-control" id="product-category-filter"><option value="all">Semua kategori</option></select></label>
+              <label class="field" for="product-status-filter"><span class="field__label">Status</span><select class="select-control" id="product-status-filter"><option value="all">Semua status</option><option value="active">Aktif</option><option value="inactive">Nonaktif</option></select></label>
+              <label class="field product-page-size" for="product-page-size"><span class="field__label">Baris per halaman</span><select class="select-control" id="product-page-size"><option value="5">5</option><option value="10">10</option><option value="20">20</option></select></label>
+            </section>
+
+            <section class="glass-card product-list-card" aria-label="Daftar produk">
+              <div class="product-list-card__heading"><div><h2>Daftar produk</h2><p id="product-result-count" aria-live="polite">Memuat katalog demo…</p></div><span class="badge badge--neutral">Harga dasar pusat</span></div>
+              <div class="product-table-wrap" tabindex="0" aria-label="Tabel produk; geser horizontal pada layar kecil">
+                <table class="product-table">
+                  <thead><tr>
+                    <th scope="col" aria-sort="ascending"><button type="button" data-product-sort="name">Produk <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col" aria-sort="none"><button type="button" data-product-sort="sku">SKU / Barcode <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col" aria-sort="none"><button type="button" data-product-sort="category">Kategori / Satuan <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col" aria-sort="none"><button type="button" data-product-sort="price">Harga dasar <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col" aria-sort="none"><button type="button" data-product-sort="status">Kedaluwarsa / Status <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col"><span class="sr-only">Aksi</span></th>
+                  </tr></thead>
+                  <tbody id="product-table-body"></tbody>
+                </table>
+                <div class="empty-state product-empty" id="product-empty-state" hidden>
+                  <span class="empty-state__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><circle cx="13.5" cy="13.5" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="m20 20 6.5 6.5M10 13.5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                  <h3 data-empty-title>Tidak ada produk yang cocok</h3><p data-empty-description>Coba ubah kata pencarian atau filter, atau tambahkan produk demo.</p>
+                  <button class="button button--secondary" type="button" data-clear-product-filters>Hapus filter</button>
+                </div>
+              </div>
+              <div class="product-pagination"><span id="product-page-summary">Halaman 1 dari 1</span><div class="product-pagination__actions"><button class="button button--secondary" type="button" data-product-page="previous" disabled aria-label="Halaman sebelumnya">Sebelumnya</button><button class="button button--secondary" type="button" data-product-page="next" disabled aria-label="Halaman berikutnya">Berikutnya</button></div></div>
+            </section>
+
+            <footer class="page-footer"><span>Katalog tersimpan di browser ini dan tidak tersinkron ke perangkat lain.</span></footer>
+          </section>
+</body>

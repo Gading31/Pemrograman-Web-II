@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi kategori perawatan diri">
+  <rect width="320" height="180" rx="24" fill="#e6f0ed"/><circle cx="160" cy="90" r="62" fill="#c7ded8"/>
+  <rect x="104" y="62" width="46" height="69" rx="10" fill="#f8fbfa" stroke="#4e8e80" stroke-width="4"/><rect x="115" y="48" width="24" height="17" rx="5" fill="#4e8e80"/>
+  <rect x="169" y="73" width="48" height="58" rx="8" fill="#eaf4f1" stroke="#4e8e80" stroke-width="4"/><path d="M180 90h26m-26 12h26" stroke="#78a99e" stroke-width="4" stroke-linecap="round"/>
+</svg>
